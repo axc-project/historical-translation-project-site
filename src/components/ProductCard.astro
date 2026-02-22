@@ -1,0 +1,19 @@
+---
+const { p } = Astro.props;
+---
+<article class="card" style="overflow:hidden">
+  <div style={`height:150px;background:linear-gradient(135deg, rgba(15,37,80,.88), rgba(201,162,39,.35)), url('${p.image}') center/cover no-repeat;`}></div>
+  <div style="padding:16px">
+    <div class="badge">{p.status}</div>
+    <h3 class="h3" style="margin-top:10px">{p.name}</h3>
+    <p class="small" style="margin:8px 0 12px">{p.tagline}</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <a class="btn secondary" href={`/supplements/${p.id}`}>View details</a>
+      {p.dossierPath ? (
+        <a class="btn ghost" href={p.dossierPath} target="_blank" rel="noopener">Download dossier</a>
+      ) : (
+        <span class="btn ghost disabled" aria-disabled="true">Dossier soon</span>
+      )}
+    </div>
+  </div>
+</article>

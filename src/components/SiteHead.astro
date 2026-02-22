@@ -1,0 +1,15 @@
+---
+const { title, description } = Astro.props;
+const baseTitle = "Historical Translation Project™";
+const fullTitle = title ? `${title} · ${baseTitle}` : baseTitle;
+const metaDescription = description ?? "Historical foundations + modern evidence. Educational content only; not medical advice.";
+---
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={metaDescription} />
+  <meta name="robots" content="index,follow" />
+  <link rel="icon" href="/favicon.svg" />
+  <link rel="stylesheet" href="/styles/global.css" />
+</head>

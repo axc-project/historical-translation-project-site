@@ -1,0 +1,15 @@
+---
+const { productName } = Astro.props;
+const subject = encodeURIComponent(`Notify me: ${productName}`);
+const body = encodeURIComponent(`Please notify me when ${productName} is available for purchase.\n\nName:\nEmail:\n`);
+const mailto = `mailto:info@example.com?subject=${subject}&body=${body}`;
+---
+<div class="card" style="padding:16px">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap">
+    <div>
+      <div style="font-weight:800;color:var(--navy)">Get notified when available</div>
+      <div class="small">No spam. Replace this with Mailchimp/Formspree later.</div>
+    </div>
+    <a class="btn" href={mailto}>Notify me</a>
+  </div>
+</div>

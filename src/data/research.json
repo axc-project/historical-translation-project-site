@@ -1,0 +1,29 @@
+[
+  {
+    "id": "digestive-balance-overview",
+    "title": "Digestive Balance Complex\u2122 \u2014 Historical Foundations + Modern Evidence Overview",
+    "category": "Digestive Foundations",
+    "summary": "An educational dossier translating medieval preventive principles into a modern evidence-forward botanical rationale for digestive comfort and balance.",
+    "downloadPath": "/downloads/Digestive_Balance_Complex_Dossier.pdf",
+    "relatedProductId": "digestive-balance-complex",
+    "date": "2026-02-22"
+  },
+  {
+    "id": "balanced-vitality-overview",
+    "title": "Balanced Vitality Complex\u2122 \u2014 Historical Foundations + Modern Evidence Overview",
+    "category": "Routine & Emotional Balance",
+    "summary": "An educational dossier focused on routine, temperament, and modern botanical evidence supporting calm focus and stress resilience (structure/function).",
+    "downloadPath": "/downloads/Balanced_Vitality_Complex_Dossier.pdf",
+    "relatedProductId": "balanced-vitality-complex",
+    "date": "2026-02-22"
+  },
+  {
+    "id": "urinary-flow-coming-soon",
+    "title": "Urinary Flow Support\u2122 \u2014 Dossier (Coming Soon)",
+    "category": "Urinary Routine Support",
+    "summary": "A forthcoming dossier that will pair historical routine principles with modern botanical references for urinary comfort support.",
+    "downloadPath": "",
+    "relatedProductId": "urinary-flow-support",
+    "date": "2026-02-22"
+  }
+]
