@@ -1,0 +1,156 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import { formulations } from "../data/formulations.js";
+const coreA = formulations.find(f => f.slug === "digestive-metabolic-core");
+const coreB = formulations.find(f => f.slug === "circulatory-vitality-core");
+---
+<BaseLayout title="Historical Translation Project™" description="Foundational formulas. Clean add-ons. Built to stack. Evidence-forward, historically grounded botanicals.">
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="container-xl hero-inner">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-6">
+          <div class="kicker">Historical foundations + modern evidence</div>
+          <h1 class="h1 mt-4 text-4xl md:text-6xl">
+            Foundational formulas.<br/>
+            Clean add‑ons.<br/>
+            Built to stack.
+          </h1>
+          <p class="sub mt-5">
+            Evidence‑forward translations of preventive principles into modern botanical formulations—structured around reputable sources and conservative structure/function language.
+          </p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <Button href="/formulations" variant="gold" text="Explore Formulations" />
+            <Button href="/stacking" variant="navy" text="Read Stacking Guide" />
+          </div>
+          <p class="mt-5 text-xs text-muted max-w-[70ch]">
+            Educational content only; not medical advice. Supplements are not intended to diagnose, treat, cure, or prevent disease.
+          </p>
+        </div>
+
+        <div class="lg:col-span-6">
+          <div class="card-solid soft-shadow overflow-hidden">
+            <img src="/images/mock-products.jpg" alt="Formulations preview" class="w-full h-[320px] md:h-[380px] object-cover" loading="lazy"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- feature row -->
+      <div class="mt-10 feature-row soft-shadow px-6 py-6 relative">
+        <div class="grid md:grid-cols-3 gap-6 text-center">
+          <div>
+            <div class="icon-pill mx-auto"><img src="/images/icons/scroll.svg" alt="" class="h-7 w-7"/></div>
+            <div class="mt-3 font-semibold text-navy">Historically grounded</div>
+            <div class="mt-1 text-sm text-muted">Inspired by Mediterranean preventive frameworks.</div>
+          </div>
+          <div>
+            <div class="icon-pill mx-auto"><img src="/images/icons/shield.svg" alt="" class="h-7 w-7"/></div>
+            <div class="mt-3 font-semibold text-navy">Evidence supported</div>
+            <div class="mt-1 text-sm text-muted">Structured around reputable sources and compliant language.</div>
+          </div>
+          <div>
+            <div class="icon-pill mx-auto"><img src="/images/icons/stack.svg" alt="" class="h-7 w-7"/></div>
+            <div class="mt-3 font-semibold text-navy">Designed to stack</div>
+            <div class="mt-1 text-sm text-muted">Two cores plus add‑ons to keep SKUs and routines simple.</div>
+          </div>
+        </div>
+
+        <img src="/images/mock-phone.png" alt="Mobile preview" class="phone-float" loading="lazy"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore core formulas -->
+  <section class="section">
+    <div class="container-xl">
+      <div class="text-center">
+        <h2 class="h2">Explore the Foundational Formulas</h2>
+      </div>
+
+      <div class="mt-10 grid md:grid-cols-2 gap-6">
+        <div class="card-solid soft-shadow p-7">
+          <div class="flex items-start gap-4">
+            <div class="h-10 w-10 rounded-xl bg-[#C9A24E]/20 flex items-center justify-center">
+              <img src="/images/icons/scroll.svg" alt="" class="h-6 w-6"/>
+            </div>
+            <div>
+              <div class="font-serif text-2xl text-navy">{coreA?.name ?? "Digestive Metabolic Core™"}</div>
+              <div class="text-sm text-muted mt-1">{coreA?.subtitle ?? "Digestive comfort + motility + metabolic rhythm"}</div>
+              <ul class="mt-4 list-disc pl-5 text-sm text-muted space-y-2">
+                <li>Supports digestive comfort and post‑meal ease</li>
+                <li>Supports healthy motility and digestive capacity</li>
+                <li>Supports normal digestive function*</li>
+              </ul>
+              <div class="mt-6 flex flex-wrap gap-3">
+                <Button href="/formulations/digestive-metabolic-core" variant="navy" text="Learn More" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-solid soft-shadow p-7">
+          <div class="flex items-start gap-4">
+            <div class="h-10 w-10 rounded-xl bg-[#C9A24E]/20 flex items-center justify-center">
+              <img src="/images/icons/shield.svg" alt="" class="h-6 w-6"/>
+            </div>
+            <div>
+              <div class="font-serif text-2xl text-navy">{coreB?.name ?? "Circulatory Vitality Core™"}</div>
+              <div class="text-sm text-muted mt-1">{coreB?.subtitle ?? "Mediterranean heritage + modern cellular support"}</div>
+              <ul class="mt-4 list-disc pl-5 text-sm text-muted space-y-2">
+                <li>Supports healthy circulation and vascular function*</li>
+                <li>Supports antioxidant balance and cellular vitality*</li>
+                <li>Designed as a daily foundation for vitality*</li>
+              </ul>
+              <div class="mt-6 flex flex-wrap gap-3">
+                <Button href="/formulations/circulatory-vitality-core" variant="navy" text="Learn More" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 text-center text-xs text-muted">
+        *Structure/function statements only. Educational content; not medical advice.
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 cores + add-ons / stacking panel -->
+  <section class="section">
+    <div class="container-xl">
+      <div class="text-center">
+        <div class="badge mx-auto">Foundational Formulas + Add‑On Modules</div>
+        <h2 class="h2 mt-4">Built to stack</h2>
+      </div>
+
+      <div class="mt-10 card-solid soft-shadow stack-panel p-8 md:p-10">
+        <div class="grid md:grid-cols-2 gap-10">
+          <div>
+            <div class="font-serif text-2xl text-navy">Foundational Stack</div>
+            <div class="mt-4 card-solid p-5">
+              <div class="font-semibold text-navy">Digestive Metabolic Core™</div>
+              <div class="text-sm text-muted mt-1">Digestive comfort + motility + metabolic rhythm</div>
+              <div class="mt-4"><Button href="/formulations/digestive-metabolic-core" variant="navy" text="Learn More" /></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="font-serif text-2xl text-navy">Targeted Stack</div>
+            <div class="mt-4 card-solid p-5">
+              <div class="font-semibold text-navy">Circulatory Vitality Core™</div>
+              <div class="text-sm text-muted mt-1">Mediterranean heritage + modern cellular support</div>
+              <div class="mt-4"><Button href="/formulations/circulatory-vitality-core" variant="navy" text="Learn More" /></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 text-center">
+          <Button href="/stacking" variant="gold" text="Read Stacking Guide" />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

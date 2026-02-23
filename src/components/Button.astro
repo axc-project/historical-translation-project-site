@@ -1,0 +1,11 @@
+---
+const { href, text, variant="navy", external=false } = Astro.props;
+const cls =
+  variant === "gold" ? "btn btn-gold" :
+  variant === "ghost" ? "btn btn-ghost" :
+  variant === "secondary" ? "btn btn-ghost" :
+  "btn btn-navy";
+---
+<a href={href} class={cls} target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
+  {text}
+</a>

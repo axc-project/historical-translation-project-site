@@ -1,0 +1,46 @@
+---
+import Button from "./Button.astro";
+---
+<header class="navbar sticky top-0 z-50">
+  <div class="container-xl py-3 flex items-center justify-between gap-4">
+    <a href="/" class="flex items-center gap-3">
+      <img src="/images/logo.png" alt="Historical Translation Project™" class="h-10 w-10 rounded-xl bg-white/5 p-1" />
+      <div class="leading-tight">
+        <div class="text-white font-extrabold tracking-[0.14em] text-[11px]">HISTORICAL TRANSLATION PROJECT™</div>
+        <div class="text-white/70 font-semibold text-[11px] -mt-0.5">Research‑first botanical dossiers & formulations</div>
+      </div>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-7 text-[13px] font-semibold">
+      <a class="navlink" href="/formulations">Formulations</a>
+      <a class="navlink" href="/stacking">How to Stack</a>
+      <a class="navlink" href="/evidence">Evidence &amp; Safety</a>
+      <a class="navlink" href="/about">About</a>
+    </nav>
+
+    <div class="hidden lg:flex items-center gap-3">
+      <Button href="/formulations" variant="ghost" text="View Core System" />
+      <Button href="/shop" variant="gold" text="Purchase" />
+    </div>
+
+    <div class="lg:hidden flex items-center gap-2">
+      <Button href="/shop" variant="gold" text="Purchase" />
+      <button id="menuBtn" class="btn btn-ghost px-3 py-2" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+
+  <div id="mobileMenu" class="hidden lg:hidden border-t border-white/10">
+    <div class="container-xl py-4 grid gap-3 text-sm font-semibold">
+      <a class="navlink" href="/formulations">Formulations</a>
+      <a class="navlink" href="/stacking">How to Stack</a>
+      <a class="navlink" href="/evidence">Evidence &amp; Safety</a>
+      <a class="navlink" href="/about">About</a>
+    </div>
+  </div>
+
+  <script is:inline>
+    const b = document.getElementById("menuBtn");
+    const m = document.getElementById("mobileMenu");
+    if (b && m) b.addEventListener("click", ()=> m.classList.toggle("hidden"));
+  </script>
+</header>

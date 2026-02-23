@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Button from "../../components/Button.astro";
+---
+<BaseLayout title="Project 01: Rambam • Historical Translation Project™">
+  <section class="mx-auto max-w-6xl px-4 pt-10 pb-16">
+    <div class="text-xs font-semibold tracking-widest text-gold">PROJECT 01</div>
+    <h1 class="mt-2 font-serif text-4xl md:text-5xl text-navy">The Rambam Translation Initiative</h1>
+    <p class="mt-3 text-muted text-lg max-w-3xl">
+      Our first flagship research project: extracting preventive themes, translating historical language, and mapping concepts to modern understanding.
+    </p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <Button href="/book" variant="secondary" text="View the Book" />
+      <Button href="https://www.amazon.com/dp/B0GPNWH877" variant="gold" text="Purchase on Amazon" external={true} />
+    </div>
+
+    <div class="mt-10 grid lg:grid-cols-3 gap-6">
+      <div class="rounded-xl2 bg-card shadow-soft border border-line p-6 lg:col-span-2">
+        <div class="text-sm font-semibold text-navy">Method</div>
+        <ul class="mt-3 list-disc pl-5 space-y-2 text-sm text-muted">
+          <li>Identify recurring preventive themes (digestion, rhythm, moderation)</li>
+          <li>Extract short quotations with location references (page/section)</li>
+          <li>Cross-reference with reputable modern resources (NIH ODS, NCCIH, PubMed reviews)</li>
+          <li>Publish consumer dossiers and compliant structure/function formula concepts</li>
+        </ul>
+      </div>
+      <div class="rounded-xl2 bg-parchment border border-line p-6">
+        <div class="text-sm font-semibold text-navy">Outputs</div>
+        <ul class="mt-3 list-disc pl-5 space-y-2 text-sm text-muted">
+          <li>Book publication</li>
+          <li>Premium dossiers</li>
+          <li>Core formulations + add-ons</li>
+          <li>Global expansion of sources</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
