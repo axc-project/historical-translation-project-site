@@ -1,9 +1,0 @@
----
-const { href="#", variant="primary", text="Button", external=false } = Astro.props;
-const base="inline-flex items-center justify-center rounded-xl2 px-5 py-3 text-sm font-semibold transition";
-const primary="bg-navy text-white shadow-soft hover:opacity-95";
-const gold="bg-gold text-navy shadow-glow hover:opacity-95";
-const secondary="bg-white text-navy border border-navy/15 hover:border-gold hover:text-gold";
-const cls = `${base} ${variant==="secondary" ? secondary : variant==="gold" ? gold : primary}`;
----
-<a href={href} class={cls} target={external ? "_blank":undefined} rel={external ? "noopener noreferrer":undefined}>{text}</a>
