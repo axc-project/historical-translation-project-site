@@ -1,0 +1,28 @@
+---
+const items = [
+  { href: "/research", label: "Research" },
+  { href: "/publications", label: "Publications" },
+  { href: "/formulations", label: "Formulations" },
+  { href: "/method", label: "Method" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+  { href: "/shop", label: "Shop (Coming Soon)" },
+];
+---
+<div id="mobileNav" class="hidden fixed inset-0 z-50 bg-black/50">
+  <div class="absolute right-0 top-0 h-full w-[86%] max-w-sm bg-navy bg-grain p-6 shadow-soft ring-1 ring-white/10">
+    <div class="flex items-center justify-between">
+      <div class="text-parchment font-display text-lg tracking-wide">Menu</div>
+      <button id="closeNav" class="w-10 h-10 rounded-full bg-white/10 ring-1 ring-white/15 flex items-center justify-center" aria-label="Close menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M6 6l12 12M18 6L6 18" stroke="rgba(255,255,255,.92)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="mt-6 flex flex-col gap-4 text-parchment/90 text-lg">
+      {items.map((it) => (
+        <a class="py-2 border-b border-white/10 hover:text-gold2" href={it.href}>{it.label}</a>
+      ))}
+    </div>
+  </div>
+</div>
