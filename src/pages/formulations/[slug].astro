@@ -1,104 +1,92 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Button from "../../components/Button.astro";
-import { getFormulationBySlug } from "../../data/formulations.js";
-import { buildMailto } from "../../utils/cta.js";
-const { slug } = Astro.params;
-const f = getFormulationBySlug(slug);
-if (!f) throw new Error("Formulation not found");
+import { formulations } from "../../data/formulations.js";
+
+// ✅ Required for static builds on Vercel
+export function getStaticPaths() {
+  return formulations.map((f) => ({
+    params: { slug: f.slug },
+    props: { formulation: f },
+  }));
+}
+
+const { formulation } = Astro.props;
+
+// If someone navigates to an unknown slug (shouldn't happen in static build)
+if (!formulation) {
+  throw new Error("Formulation not found");
+}
 ---
-<BaseLayout title={`${f.name} • Historical Translation Project™`}>
-  <section class="mx-auto max-w-6xl px-4 pt-10 pb-16">
-    <div class="grid lg:grid-cols-12 gap-8 items-start">
-      <div class="lg:col-span-8">
-        <div class="text-xs font-semibold tracking-widest text-gold">{f.tier} FORMULA</div>
-        <h1 class="mt-2 font-serif text-4xl md:text-5xl text-navy">{f.name}</h1>
-        <p class="mt-3 text-muted text-lg max-w-3xl">{f.heroTagline}</p>
 
-        <div class="mt-6 flex flex-wrap gap-3">
-          <Button href={f.purchase.href} variant="gold" text={f.purchase.label} />
-          <Button href={buildMailto(f.cta)} variant="secondary" text="Notify Me" external={true} />
-          <Button href="/book" variant="secondary" text="Book" />
-          <Button href="/projects/rambam" variant="secondary" text="Rambam Project" />
-        </div>
+<BaseLayout title={`${formulation.name} — Historical Translation Project™`} description={formulation.subtitle}>
+  <section class="section">
+    <div class="container-xl">
+      <div class="badge">Core Formula</div>
+      <h1 class="h1 mt-4 text-4xl md:text-5xl">{formulation.name}</h1>
+      <p class="sub mt-4">{formulation.subtitle}</p>
 
-        <div class="mt-8 rounded-xl2 bg-card shadow-soft border border-line p-6">
-          <div class="text-xs font-semibold tracking-widest text-gold">OVERVIEW</div>
-          <h2 class="mt-2 font-serif text-2xl text-navy">What it is</h2>
-          <p class="mt-3 text-sm text-muted leading-relaxed">{f.overview}</p>
-          <p class="mt-4 text-sm text-muted">{f.serving}</p>
-        </div>
+      <div class="mt-8 grid lg:grid-cols-12 gap-8">
+        <div class="lg:col-span-8">
+          <div class="card-solid soft-shadow p-7">
+            <h2 class="font-serif text-2xl text-navy">Overview</h2>
+            <p class="mt-3 text-muted leading-relaxed">{formulation.description}</p>
 
-        {f.formulaTable && (
-          <div class="mt-6 rounded-xl2 bg-card shadow-soft border border-line p-6">
-            <div class="text-xs font-semibold tracking-widest text-gold">FORMULA</div>
-            <h2 class="mt-2 font-serif text-2xl text-navy">{f.formulaTable.title}</h2>
-            <div class="mt-4 overflow-hidden rounded-xl2 border border-line">
-              <table class="w-full text-sm">
-                <thead class="bg-parchment">
-                  <tr>
-                    <th class="text-left px-4 py-3 font-semibold text-navy">Ingredient</th>
-                    <th class="text-right px-4 py-3 font-semibold text-navy">Amount</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {f.formulaTable.rows.map(r => (
-                    <tr class="border-t border-line">
-                      <td class="px-4 py-3 text-muted">{r[0]}</td>
-                      <td class="px-4 py-3 text-right font-semibold text-navy">{r[1]}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <ul class="mt-4 list-disc pl-5 space-y-1 text-xs text-muted">
-              {f.formulaTable.notes.map(n => <li>{n}</li>)}
-            </ul>
-          </div>
-        )}
-
-        <div class="mt-6 space-y-6">
-          {f.blocks.map(b => (
-            <div class="rounded-xl2 bg-card shadow-soft border border-line p-6">
-              <h2 class="font-serif text-2xl text-navy">{b.heading}</h2>
-              {b.body && <p class="mt-3 text-sm text-muted leading-relaxed">{b.body}</p>}
-              {b.bullets && (
-                <ul class="mt-4 list-disc pl-5 space-y-2 text-sm text-muted">
-                  {b.bullets.map(x => <li>{x}</li>)}
+            {formulation.bullets?.length ? (
+              <div class="mt-6">
+                <h3 class="font-semibold text-navy">Structure/Function Support*</h3>
+                <ul class="mt-3 list-disc pl-5 text-muted space-y-2">
+                  {formulation.bullets.map((b) => <li>{b}</li>)}
                 </ul>
-              )}
-            </div>
-          ))}
-        </div>
+              </div>
+            ) : null}
 
-        <div class="mt-8 rounded-xl2 bg-parchment border border-line p-5 text-xs text-muted leading-relaxed">
-          <div class="font-semibold text-navy">FDA Disclaimer</div>
-          These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
-        </div>
-      </div>
+            {formulation.ingredients?.length ? (
+              <div class="mt-8">
+                <h3 class="font-semibold text-navy">Formula (in development)</h3>
+                <div class="mt-3 overflow-hidden rounded-2xl border border-[rgba(11,15,20,0.10)]">
+                  <table class="w-full text-sm">
+                    <thead class="bg-[rgba(7,22,37,0.06)]">
+                      <tr>
+                        <th class="text-left p-3">Ingredient</th>
+                        <th class="text-left p-3">Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {formulation.ingredients.map((ing) => (
+                        <tr class="border-t border-[rgba(11,15,20,0.10)]">
+                          <td class="p-3">{ing.name}</td>
+                          <td class="p-3">{ing.amount}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ) : null}
 
-      <aside class="lg:col-span-4 space-y-6">
-        <div class="rounded-xl2 bg-navy text-white border border-navy/10 shadow-soft overflow-hidden">
-          <div class="p-6">
-            <div class="text-xs font-semibold tracking-widest text-gold">PURCHASE STATUS</div>
-            <div class="mt-2 font-serif text-2xl">Coming soon</div>
-            <p class="mt-2 text-sm text-white/80 leading-relaxed">
-              Shopify checkout is not live yet. Use Notify Me for early access.
+            <p class="mt-6 text-xs text-muted">
+              *Educational structure/function statements only. Not medical advice. Supplements are not intended to diagnose,
+              treat, cure, or prevent disease.
             </p>
-            <div class="mt-5 flex flex-wrap gap-3">
-              <Button href="/shop" variant="gold" text="Purchase (Coming Soon)" />
-              <Button href={buildMailto(f.cta)} variant="secondary" text="Notify Me" external={true} />
-            </div>
           </div>
         </div>
 
-        <div class="rounded-xl2 bg-card shadow-soft border border-line p-6">
-          <div class="text-sm font-semibold text-navy">Educational note</div>
-          <p class="mt-2 text-sm text-muted leading-relaxed">
-            We publish dossiers and product pages using structure/function language only. No disease treatment claims. No medical advice.
-          </p>
-        </div>
-      </aside>
+        <aside class="lg:col-span-4">
+          <div class="card-solid soft-shadow p-6">
+            <h3 class="font-semibold text-navy">Next steps</h3>
+            <p class="mt-2 text-sm text-muted">
+              This product is in development. Purchase links will go live once manufacturing and Shopify checkout are ready.
+            </p>
+
+            <div class="mt-5 flex flex-col gap-3">
+              <Button href="/shop" variant="gold" text="Purchase (Coming Soon)" />
+              <Button href="/stacking" variant="navy" text="How to Stack" />
+              <Button href="/evidence" variant="ghost" text="Evidence & Safety" />
+            </div>
+          </div>
+        </aside>
+      </div>
     </div>
   </section>
 </BaseLayout>
