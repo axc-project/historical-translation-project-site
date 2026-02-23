@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-parchment-50 text-slate-900 font-sans;
+}
+
+h1, h2, h3, h4 {
+  @apply font-serif tracking-tight;
+}
+
+.prose-htp p {
+  @apply leading-relaxed;
+}
+
+/* Subtle “premium” grain using CSS only (no external assets) */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 15%, rgba(255,255,255,0.35), transparent 55%),
+    radial-gradient(circle at 80% 35%, rgba(255,255,255,0.22), transparent 60%),
+    radial-gradient(circle at 30% 75%, rgba(0,0,0,0.06), transparent 45%);
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Gold button shimmer */
+.btn-gold {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold::after {
+  content: "";
+  position: absolute;
+  inset: -40% -60%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
+  transform: translateX(-40%);
+  transition: transform 700ms ease;
+}
+
+.btn-gold:hover::after {
+  transform: translateX(40%);
+}
+
+/* Better focus styles */
+:focus-visible {
+  outline: 3px solid rgba(201,156,58,0.55);
+  outline-offset: 3px;
+}

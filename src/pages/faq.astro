@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'FAQ — Historical Translation Project™';
+const description = 'Frequently asked questions about our research-first approach, dossiers, and product philosophy.';
+
+const faqs = [
+  {
+    q: 'Is this medical advice?',
+    a: 'No. This site is educational. We translate historical ideas and summarize modern evidence signals. Always consult a qualified clinician for medical decisions.'
+  },
+  {
+    q: 'Do you claim to treat or cure diseases?',
+    a: 'No. We use compliant structure/function language (e.g., “supports comfort” or “supports healthy function”). Our supplements are not intended to diagnose, treat, cure, or prevent disease.'
+  },
+  {
+    q: 'Why “foundational formulas + targeted modules”?',
+    a: 'Because it keeps a clean, understandable system while allowing personalization. We avoid redundancy—add-ons are only recommended when they add something distinct.'
+  },
+  {
+    q: 'Are products available to buy now?',
+    a: 'Shopify integration is coming soon. For now, you can email info@axellaresearch.com to be notified when checkout is enabled.'
+  },
+  {
+    q: 'How will the catalog evolve over time?',
+    a: 'As we publish more books and complete more research, we will add new formulations and dossiers. The site structure is designed so new sections can be added without redesign.'
+  },
+  {
+    q: 'Where do dossiers come from?',
+    a: 'Dossiers are written from two inputs: (1) historical foundations from primary texts/traditions and (2) modern evidence summaries from reputable scientific sources. We keep the tone conservative and avoid overclaiming.'
+  }
+];
+---
+<BaseLayout title={title} description={description} canonical="/faq">
+  <section class="bg-parchment-50">
+    <div class="mx-auto max-w-6xl px-4 py-14">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 rounded-full border border-slate-900/10 bg-white/70 px-4 py-2 text-xs text-slate-700 shadow-soft">FAQ</div>
+        <h1 class="mt-6 text-4xl sm:text-5xl text-navy-950">Questions, answered</h1>
+        <p class="mt-4 text-lg text-slate-700 leading-relaxed">If you don’t see your question, email us and we’ll add it here.</p>
+      </div>
+
+      <div class="mt-10 grid gap-4 max-w-4xl">
+        {faqs.map((f) => (
+          <details class="group rounded-3xl border border-navy-950/10 bg-white/70 p-7 shadow-soft">
+            <summary class="cursor-pointer list-none flex items-start justify-between gap-6">
+              <div class="font-semibold text-navy-950 text-lg">{f.q}</div>
+              <div class="mt-1 h-7 w-7 rounded-full bg-navy-950 text-white flex items-center justify-center shrink-0 group-open:rotate-45 transition">
+                <span class="text-lg leading-none">+</span>
+              </div>
+            </summary>
+            <p class="mt-4 text-slate-700 leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+
+      <div class="mt-10 rounded-3xl bg-navy-950 text-white overflow-hidden shadow-soft relative">
+        <div class="absolute inset-0 bg-navy-radial"></div>
+        <div class="absolute inset-0 opacity-40 grain"></div>
+        <div class="relative p-8 sm:p-10">
+          <h2 class="font-serif text-3xl">Still have a question?</h2>
+          <p class="mt-3 text-white/75">Email us and we’ll respond—and use your question to improve the public FAQ.</p>
+          <a class="mt-6 inline-flex items-center justify-center rounded-full bg-gold-400 px-6 py-3 text-sm font-semibold text-navy-950 shadow-glow hover:bg-gold-200" href="mailto:info@axellaresearch.com?subject=HTP%20Question">Email info@axellaresearch.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

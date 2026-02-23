@@ -1,0 +1,61 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="bg-navy-950 text-white">
+  <div class="mx-auto max-w-6xl px-4 py-14">
+    <div class="grid gap-10 lg:grid-cols-3">
+      <div class="space-y-4">
+        <div class="flex items-center gap-3">
+          <img src="/images/htp-logo.png" alt="Historical Translation Project" class="h-10 w-10 rounded-md" loading="lazy" />
+          <div>
+            <div class="font-serif text-lg">Historical Translation Project™</div>
+            <div class="text-white/70 text-sm">Historical foundations + modern evidence</div>
+          </div>
+        </div>
+        <p class="text-white/75 text-sm leading-relaxed">
+          We research historical health traditions across civilizations and translate timeless preventive principles into modern,
+          evidence-forward educational dossiers and thoughtfully designed botanical formulations.
+        </p>
+        <p class="text-white/60 text-xs">
+          Educational content only. Not medical advice. Products are not intended to diagnose, treat, cure, or prevent disease.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-8">
+        <div>
+          <div class="font-semibold mb-3">Explore</div>
+          <ul class="space-y-2 text-sm text-white/75">
+            <li><a class="hover:text-white" href="/book">The Book</a></li>
+            <li><a class="hover:text-white" href="/research-library">Research Library</a></li>
+            <li><a class="hover:text-white" href="/supplements">Supplements</a></li>
+            <li><a class="hover:text-white" href="/method">Our Method</a></li>
+            <li><a class="hover:text-white" href="/dossiers">Download Dossiers</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-semibold mb-3">Contact</div>
+          <ul class="space-y-2 text-sm text-white/75">
+            <li><a class="hover:text-white" href="mailto:info@axellaresearch.com">info@axellaresearch.com</a></li>
+            <li><a class="hover:text-white" href="/contact">Contact form</a></li>
+            <li><a class="hover:text-white" href="/faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-soft">
+        <div class="font-serif text-xl">Get updates</div>
+        <p class="mt-2 text-sm text-white/75">Join the early list for new dossiers, new publications, and product releases.</p>
+        <form class="mt-4 flex flex-col sm:flex-row gap-3" action="mailto:info@axellaresearch.com" method="post" enctype="text/plain">
+          <input class="w-full rounded-full bg-white/10 border border-white/15 px-4 py-2 text-sm placeholder:text-white/50" name="email" type="email" placeholder="you@example.com" required />
+          <button class="btn-gold rounded-full bg-gold-400 px-5 py-2 text-sm font-semibold text-navy-950 hover:bg-gold-200 transition" type="submit">Notify me</button>
+        </form>
+        <p class="mt-3 text-xs text-white/60">This opens your email client. Shopify checkout will be added later.</p>
+      </div>
+    </div>
+
+    <div class="mt-10 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+      <div class="text-xs text-white/60">© {year} Historical Translation Project™. All rights reserved.</div>
+      <div class="text-xs text-white/60">Designed for mobile • Built with Astro + Tailwind</div>
+    </div>
+  </div>
+</footer>

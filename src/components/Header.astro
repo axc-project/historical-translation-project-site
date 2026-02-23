@@ -1,0 +1,75 @@
+---
+const nav = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'The Book', href: '/book' },
+  { label: 'Research Library', href: '/research-library' },
+  { label: 'Supplements', href: '/supplements' },
+  { label: 'Our Method', href: '/method' },
+  { label: 'FAQ', href: '/faq' },
+  { label: 'Contact', href: '/contact' }
+];
+
+const ctas = [
+  { label: 'View Supplements', href: '/supplements' },
+  { label: 'Download Dossiers', href: '/dossiers' }
+];
+---
+<header class="sticky top-0 z-50">
+  <div class="bg-navy-950/95 backdrop-blur border-b border-white/10">
+    <div class="mx-auto max-w-6xl px-4">
+      <div class="flex items-center justify-between py-3">
+        <a href="/" class="flex items-center gap-3" aria-label="Historical Translation Project home">
+          <img src="/images/htp-logo.png" alt="Historical Translation Project logo" class="h-9 w-9 rounded-md" loading="eager" />
+          <div class="hidden sm:block">
+            <div class="text-white font-serif text-lg leading-none">Historical Translation Project™</div>
+            <div class="text-white/70 text-xs tracking-wide">Historical foundations + modern evidence</div>
+          </div>
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden lg:flex items-center gap-6" aria-label="Primary">
+          {nav.map((item) => (
+            <a class="text-white/80 hover:text-white text-sm" href={item.href}>{item.label}</a>
+          ))}
+        </nav>
+
+        <!-- CTAs -->
+        <div class="hidden md:flex items-center gap-3">
+          <a href={ctas[0].href} class="text-white/80 hover:text-white text-sm">{ctas[0].label}</a>
+          <a href={ctas[1].href} class="btn-gold inline-flex items-center justify-center rounded-full bg-gold-400 px-4 py-2 text-sm font-semibold text-navy-950 shadow-glow hover:bg-gold-200 transition">{ctas[1].label}</a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button id="menuBtn" class="lg:hidden inline-flex items-center justify-center rounded-full border border-white/15 p-2 text-white/90 hover:bg-white/10" aria-label="Open menu" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile panel -->
+    <div id="mobilePanel" class="lg:hidden hidden border-t border-white/10">
+      <div class="mx-auto max-w-6xl px-4 py-4 grid gap-3">
+        {nav.map((item) => (
+          <a class="text-white/85 hover:text-white text-sm py-1" href={item.href}>{item.label}</a>
+        ))}
+        <div class="pt-2 flex gap-3">
+          <a href={ctas[0].href} class="inline-flex items-center justify-center rounded-full border border-white/15 px-4 py-2 text-sm text-white/90 hover:bg-white/10">{ctas[0].label}</a>
+          <a href={ctas[1].href} class="btn-gold inline-flex items-center justify-center rounded-full bg-gold-400 px-4 py-2 text-sm font-semibold text-navy-950 shadow-glow hover:bg-gold-200 transition">{ctas[1].label}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    const btn = document.getElementById('menuBtn');
+    const panel = document.getElementById('mobilePanel');
+    btn?.addEventListener('click', () => {
+      const isOpen = !panel.classList.contains('hidden');
+      panel.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  </script>
+</header>

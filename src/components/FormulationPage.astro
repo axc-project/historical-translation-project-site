@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const { formulation } = Astro.props;
+
+const title = `${formulation.name} — Historical Translation Project™`;
+const description = formulation.summary;
+---
+<BaseLayout title={title} description={description} canonical={`/supplements/${formulation.slug}`}>
+  <section class="bg-parchment-50">
+    <div class="mx-auto max-w-6xl px-4 py-14">
+      <div class="grid gap-10 lg:grid-cols-12 lg:items-start">
+        <div class="lg:col-span-8">
+          <div class="inline-flex items-center gap-2 rounded-full border border-slate-900/10 bg-white/70 px-4 py-2 text-xs text-slate-700 shadow-soft">{formulation.status}</div>
+          <h1 class="mt-6 text-4xl sm:text-5xl text-navy-950">{formulation.name}</h1>
+          <p class="mt-3 text-lg text-slate-700">{formulation.subtitle}</p>
+          <p class="mt-5 text-slate-700 leading-relaxed max-w-3xl">{formulation.summary}</p>
+
+          <div class="mt-8 grid gap-4 sm:grid-cols-3">
+            {formulation.bullets.map((b) => (
+              <div class="rounded-2xl border border-slate-200 bg-white/70 p-5">
+                <div class="h-2 w-2 rounded-full bg-gold-400"></div>
+                <div class="mt-3 text-sm font-semibold text-navy-950">{b}</div>
+              </div>
+            ))}
+          </div>
+
+          <div class="mt-10 rounded-3xl border border-navy-950/10 bg-white/70 p-8 shadow-soft">
+            <h2 class="text-2xl text-navy-950">Historical foundations</h2>
+            <div class="mt-4 space-y-3 text-slate-700 prose-htp">
+              {formulation.historical.map((p) => (<p>{p}</p>))}
+            </div>
+          </div>
+
+          <div class="mt-6 rounded-3xl border border-navy-950/10 bg-white/70 p-8 shadow-soft">
+            <h2 class="text-2xl text-navy-950">Modern overview</h2>
+            <div class="mt-4 space-y-3 text-slate-700 prose-htp">
+              {formulation.modern.map((p) => (<p>{p}</p>))}
+            </div>
+          </div>
+
+          <div class="mt-6 rounded-3xl border border-navy-950/10 bg-white/70 p-8 shadow-soft">
+            <h2 class="text-2xl text-navy-950">Ingredients</h2>
+            <p class="mt-2 text-sm text-slate-600">Each ingredient is selected for (1) historical continuity and (2) modern evidence signals. We keep the narrative clean and non‑medical.</p>
+            <div class="mt-6 grid gap-4">
+              {formulation.ingredients.map((ing) => (
+                <div class="rounded-2xl border border-slate-200 bg-parchment-50 p-6">
+                  <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                    <div class="font-semibold text-navy-950">{ing.name}</div>
+                    <div class="text-xs text-slate-600">Historical + Modern</div>
+                  </div>
+                  <div class="mt-3 grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <div class="text-xs font-semibold text-slate-700">Historical note</div>
+                      <p class="mt-1 text-sm text-slate-700 leading-relaxed">{ing.hist}</p>
+                    </div>
+                    <div>
+                      <div class="text-xs font-semibold text-slate-700">Modern evidence signal</div>
+                      <p class="mt-1 text-sm text-slate-700 leading-relaxed">{ing.modern}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="mt-6 rounded-3xl border border-navy-950/10 bg-white/70 p-8 shadow-soft">
+            <h2 class="text-2xl text-navy-950">Curated add‑ons (optional)</h2>
+            <p class="mt-2 text-sm text-slate-600">Only add modules that contribute something distinct. If a need is already addressed in the base formula, we avoid duplicating it.</p>
+            <div class="mt-6 grid gap-4">
+              {formulation.addOns.map((a) => (
+                <div class="rounded-2xl border border-slate-200 bg-parchment-50 p-6">
+                  <div class="font-semibold text-navy-950">{a.indication}</div>
+                  <ul class="mt-3 space-y-2 text-sm text-slate-700">
+                    {a.items.map((it) => (
+                      <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-gold-400"></span><span>{it}</span></li>
+                    ))}
+                  </ul>
+                  {a.note ? <p class="mt-3 text-xs text-slate-600">{a.note}</p> : null}
+                  <div class="mt-4">
+                    <a href="#purchase" class="btn-gold inline-flex items-center justify-center rounded-full bg-gold-400 px-5 py-2 text-sm font-semibold text-navy-950 shadow-glow hover:bg-gold-200 transition">Purchase (coming soon)</a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="mt-6 rounded-3xl border border-navy-950/10 bg-white/70 p-8 shadow-soft">
+            <h2 class="text-2xl text-navy-950">Safety & responsible use</h2>
+            <ul class="mt-4 space-y-2 text-sm text-slate-700">
+              {formulation.safety.map((s) => (
+                <li class="flex gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-navy-950"></span><span>{s}</span></li>
+              ))}
+            </ul>
+            <p class="mt-4 text-xs text-slate-600">This page is educational. It does not replace medical advice.</p>
+          </div>
+        </div>
+
+        <aside class="lg:col-span-4">
+          <div class="sticky top-24 space-y-4">
+            <div id="purchase" class="rounded-3xl bg-navy-950 text-white overflow-hidden shadow-soft relative">
+              <div class="absolute inset-0 bg-navy-radial"></div>
+              <div class="absolute inset-0 opacity-40 grain"></div>
+              <div class="relative p-7">
+                <div class="text-gold-200 text-xs uppercase tracking-wide">Shopify checkout</div>
+                <div class="mt-2 font-serif text-2xl">Coming soon</div>
+                <p class="mt-2 text-white/75 text-sm">We’ll enable purchase buttons once Shopify is integrated and the first production runs are available.</p>
+                <a href="mailto:info@axellaresearch.com?subject=HTP%20Product%20Release%20Updates" class="mt-5 inline-flex items-center justify-center rounded-full bg-gold-400 px-5 py-2 text-sm font-semibold text-navy-950 shadow-glow hover:bg-gold-200">Notify me</a>
+              </div>
+            </div>
+
+            <div class="rounded-3xl border border-slate-200 bg-white/70 p-7 shadow-soft">
+              <div class="font-semibold text-navy-950">Download dossier</div>
+              <p class="mt-2 text-sm text-slate-700">A printable PDF dossier will live here. For now, see the Dossiers page.</p>
+              <a href="/dossiers" class="mt-4 inline-flex items-center justify-center rounded-full border border-navy-950/15 bg-white px-5 py-2 text-sm font-semibold text-navy-950 hover:bg-white/70">Go to dossiers</a>
+            </div>
+
+            <div class="rounded-3xl border border-slate-200 bg-parchment-50 p-7">
+              <div class="font-semibold text-navy-950">Method note</div>
+              <p class="mt-2 text-sm text-slate-700">We source ingredients with (1) historical continuity, (2) modern evidence signals, and (3) manufacturing feasibility for clean labels.</p>
+              <a href="/method" class="mt-4 inline-flex text-sm font-semibold text-navy-950/80 hover:text-navy-950">Read our method →</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,6 @@
+---
+import FormulationPage from '../../components/FormulationPage.astro';
+import { getFormulationBySlug } from '../../data/formulations.js';
+const formulation = getFormulationBySlug('circulatory-vitality-core');
+---
+<FormulationPage formulation={formulation} />
