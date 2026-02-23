@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+---
+<BaseLayout title="About • Historical Translation Project™" description="Our mission: translate global historical remedies into modern evidence-forward education and formulas.">
+  <section class="container-xl section">
+    <div class="kicker">About</div>
+    <h1 class="h2 mt-2">A research‑first translation studio.</h1>
+    <p class="sub mt-3">
+      Historical Translation Project™ exists to research ancient and medieval preventive frameworks across cultures—and responsibly translate them into modern, evidence‑forward educational dossiers and botanical formulations.
+    </p>
+
+    <div class="mt-8 grid md:grid-cols-2 gap-6">
+      <div class="card-solid soft-shadow p-7">
+        <div class="font-serif text-2xl text-navy">Our mission</div>
+        <p class="text-muted mt-3 leading-relaxed">
+          Continue researching historical remedies throughout the globe and across history—then integrate those insights with reputable modern knowledge.
+          We publish with clarity, conservative claims, and premium presentation.
+        </p>
+      </div>
+      <div class="card-solid soft-shadow p-7">
+        <div class="font-serif text-2xl text-navy">Project 01: Rambam</div>
+        <p class="text-muted mt-3 leading-relaxed">
+          Our inaugural project centers on Rambam’s preventive principles—translated into a practical modern framework and paired with curated modern references.
+        </p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          <Button href="/projects/rambam" variant="navy" text="View Project" />
+          <Button href="/book" variant="gold" text="View the Book" />
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

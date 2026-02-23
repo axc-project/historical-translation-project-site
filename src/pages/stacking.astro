@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+---
+<BaseLayout title="How to Stack • Historical Translation Project™" description="Two cores + add-ons: a modular system designed to minimize pills and simplify routines.">
+  <section class="container-xl section">
+    <div class="kicker">How to Stack</div>
+    <h1 class="h2 mt-2">Two cores. Clean add‑ons. Built to stack.</h1>
+    <p class="sub mt-3">
+      Our system is designed to keep the daily routine simple: start with a core, then add targeted modules only if needed.
+      This approach reduces SKU complexity and helps consumers avoid taking too many pills.
+    </p>
+
+    <div class="mt-8 grid md:grid-cols-2 gap-6">
+      <div class="card-solid soft-shadow p-7">
+        <div class="kicker">Step 01</div>
+        <h2 class="font-serif text-2xl text-navy mt-2">Choose a Core</h2>
+        <p class="text-muted mt-3 leading-relaxed">
+          Begin with one core formula for 30–60 days as a baseline. Cores are designed for daily routine support.
+        </p>
+        <ul class="mt-4 list-disc pl-5 text-sm text-muted space-y-2">
+          <li><b>Digestive Metabolic Core™</b> — digestive comfort + motility + post‑meal balance</li>
+          <li><b>Circulatory Vitality Core™</b> — circulation + antioxidant balance + cellular vitality (in development)</li>
+        </ul>
+      </div>
+
+      <div class="card-solid soft-shadow p-7">
+        <div class="kicker">Step 02</div>
+        <h2 class="font-serif text-2xl text-navy mt-2">Add One Module at a Time</h2>
+        <p class="text-muted mt-3 leading-relaxed">
+          Add‑ons are intended as short, targeted layers—introduced one at a time so the routine stays clear and manageable.
+        </p>
+        <ul class="mt-4 list-disc pl-5 text-sm text-muted space-y-2">
+          <li>Keep total daily capsule count low by using extract‑based formulas</li>
+          <li>Prefer 1 add‑on at a time (then reassess)</li>
+          <li>Use safety guidance + interaction cautions</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-8 card soft-shadow p-7">
+      <div class="kicker">Important</div>
+      <div class="font-serif text-xl text-navy mt-2">Educational content only; not medical advice.</div>
+      <p class="text-muted mt-2 leading-relaxed">
+        These statements have not been evaluated by the FDA. Products are not intended to diagnose, treat, cure, or prevent disease.
+      </p>
+    </div>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      <Button href="/formulations" variant="navy" text="Explore Formulations" />
+      <Button href="/shop" variant="gold" text="Purchase (Coming Soon)" />
+    </div>
+  </section>
+</BaseLayout>
