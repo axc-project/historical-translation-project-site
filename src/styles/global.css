@@ -150,3 +150,26 @@ section {
     padding-bottom: 5rem;
   }
 }
+/* ============================= */
+/* Cream Background Typography   */
+/* ============================= */
+
+/* All standard text on parchment */
+body {
+  color: #071523;
+}
+
+/* Headings on cream background */
+h1, h2, h3, h4, h5, h6 {
+  color: #071523;
+}
+
+/* Paragraphs */
+p {
+  color: rgba(7, 21, 35, 0.9);
+}
+
+/* Muted text */
+.text-muted {
+  color: rgba(7, 21, 35, 0.65);
+}
