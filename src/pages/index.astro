@@ -15,6 +15,7 @@ const heroImage = "/images/hero-landscape.png";
   <section class="hero">
     <div class="heroBg" style={`background-image:url(${heroImage});`}></div>
     <div class="heroOverlay"></div>
+    <!-- lighter fade: do NOT wash out the bottom -->
     <div class="heroFade"></div>
 
     <Container class="heroInner">
@@ -35,56 +36,85 @@ const heroImage = "/images/hero-landscape.png";
     </Container>
   </section>
 
-  <!-- HOME HUB -->
+  <!-- HOME HUB CARDS (NO REDUNDANCY) -->
   <section class="parchment">
     <Container>
-      <header class="hubHeader">
+      <div class="hubHeader">
         <div class="hubKicker">Start Here</div>
         <h2 class="hubTitle">Browse the Project</h2>
         <p class="hubSub">
-          Explore our formulation systems, foundational publications, and research notes—each translating historical doctrine into modern structure/function frameworks.*
+          Navigate by program systems, publications, or educational research notes—each grounded in historical lineage and modern interpretation.*
         </p>
-      </header>
+      </div>
 
       <div class="hubGrid">
         <!-- FORMULATIONS -->
-        <Card variant="parchment" href="/formulations" ariaLabel="Go to formulations" class="hubCard">
-          <div class="hubEyebrow">Formulations</div>
-          <div class="hubCardTitle">Botanical Program Systems</div>
+        <Card
+          variant="parchment"
+          href="/formulations"
+          ariaLabel="Go to formulations"
+          class="hubCard"
+        >
+          <div class="hubCardTop">
+            <div class="hubEyebrow">Formulations</div>
+            <div class="hubCardTitle">Botanical Program Systems</div>
+          </div>
+
           <p class="hubCardText">
             A modular architecture: foundational cores first, with optional add-ons only when additional support is desired.*
           </p>
+
           <ul class="hubBullets">
             <li>Structured ingredient rationale</li>
-            <li>Downloadable dossiers (PDF links)</li>
-            <li>Purchase links (Shopify placeholders)</li>
+            <li>Downloadable dossiers (PDF)</li>
+            <li>Purchase links (Shopify placeholder)</li>
           </ul>
+
           <div class="hubCTA">Explore Programs →</div>
         </Card>
 
         <!-- PUBLICATIONS -->
-        <Card variant="parchment" href="/publications" ariaLabel="Go to publications" class="hubCard">
-          <div class="hubEyebrow">Publications</div>
-          <div class="hubCardTitle">Foundational Texts</div>
+        <Card
+          variant="parchment"
+          href="/publications"
+          ariaLabel="Go to publications"
+          class="hubCard"
+        >
+          <div class="hubCardTop">
+            <div class="hubEyebrow">Publications</div>
+            <div class="hubCardTitle">Foundational Texts</div>
+          </div>
+
           <p class="hubCardText">
-            Our work begins with texts. Each publication becomes a foundation for responsible translation into modern biological frameworks.
+            Our work begins with texts. Each publication becomes a disciplined foundation for responsible translation into modern frameworks.
           </p>
+
           <ul class="hubBullets">
             <li>Amazon purchase placeholders</li>
-            <li>Conceptual frameworks & excerpts</li>
-            <li>Scalable library of future titles</li>
+            <li>Excerpt and framework overview</li>
+            <li>Methodology & sourcing approach</li>
           </ul>
+
           <div class="hubCTA">View Books →</div>
         </Card>
 
-        <!-- RESEARCH -->
-        <Card variant="parchment" href="/research" ariaLabel="Go to research" class="hubCard hubCardWide">
-          <div class="hubEyebrow">Research</div>
-          <div class="hubCardTitle">Educational Translational Notes</div>
+        <!-- OPTIONAL: RESEARCH (recommended) -->
+        <Card
+          variant="parchment"
+          href="/research"
+          ariaLabel="Go to research"
+          class="hubCard hubCardWide"
+        >
+          <div class="hubCardTop">
+            <div class="hubEyebrow">Research</div>
+            <div class="hubCardTitle">Educational Translational Notes</div>
+          </div>
+
           <p class="hubCardText">
-            We discuss disease categories as historical and biological context only—without product treatment claims.
-            Our formulations are presented using conservative structure/function language and responsible safety framing.*
+            Disease categories are discussed only as biological context and historical lineage—without product treatment claims.
+            We focus on normal structure/function support language and conservative interpretation.*
           </p>
+
           <div class="hubCTA">Read Research Notes →</div>
         </Card>
       </div>
@@ -102,15 +132,15 @@ const heroImage = "/images/hero-landscape.png";
   .hero { position: relative; overflow: hidden; background: #071523; }
   .heroBg { position:absolute; inset:0; background-size:cover; background-position:center; transform: scale(1.02); }
   .heroOverlay { position:absolute; inset:0; background: radial-gradient(900px 520px at 26% 18%, rgba(7,21,35,.18), rgba(7,21,35,.58)); }
-  /* keep hero readable without washing it out */
-  .heroFade { position:absolute; left:0; right:0; bottom:0; height: 22%; background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(244,239,228,.55)); }
+  /* lighter fade so hero doesn’t “disappear” */
+  .heroFade { position:absolute; inset:auto 0 0 0; height: 26%; background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(244,239,228,.70)); }
   .heroInner { position: relative; padding: 88px 0 96px; }
   .heroKicker { letter-spacing: .18em; text-transform: uppercase; font-size: 12px; color: rgba(255,255,255,.78); }
   .heroTitle { margin-top: 14px; font-family: ui-serif, Georgia, "Times New Roman", Times, serif; font-weight: 600; font-size: clamp(34px, 4.2vw, 56px); line-height: 1.04; color: #fff; }
   .heroSub { margin-top: 16px; max-width: 62ch; color: rgba(255,255,255,.88); font-size: 16px; line-height: 1.6; }
   .heroActions { margin-top: 22px; display:flex; gap:12px; flex-wrap: wrap; }
 
-  /* HUB */
+  /* PARCHMENT SECTION */
   .parchment {
     background:
       radial-gradient(1200px 700px at 28% 0%, rgba(212,175,55,.10), transparent 60%),
@@ -131,14 +161,15 @@ const heroImage = "/images/hero-landscape.png";
   }
 
   .hubCard { padding: 22px; border-radius: 22px; }
+  .hubCardTop { display:flex; flex-direction: column; gap: 8px; }
   .hubEyebrow { letter-spacing:.16em; text-transform:uppercase; font-size: 12px; color: rgba(7,21,35,.60); }
-  .hubCardTitle { margin-top: 8px; font-family: ui-serif, Georgia, Times, serif; font-size: 26px; color: #071523; }
+  .hubCardTitle { font-family: ui-serif, Georgia, Times, serif; font-size: 26px; color: #071523; }
   .hubCardText { margin-top: 10px; color: rgba(7,21,35,.78); line-height: 1.6; }
 
   .hubBullets { margin-top: 14px; padding-left: 18px; color: rgba(7,21,35,.86); line-height: 1.6; }
   .hubBullets li { margin-bottom: 6px; }
 
-  .hubCTA { margin-top: 16px; font-weight: 800; color: #0b2a44; }
+  .hubCTA { margin-top: 16px; font-weight: 700; color: #0b2a44; }
 
   .hubCardWide { grid-column: 1 / -1; }
 
