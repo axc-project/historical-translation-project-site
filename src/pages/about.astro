@@ -1,0 +1,48 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/Container.astro";
+import Card from "@components/Card.astro";
+import SectionHeading from "@components/SectionHeading.astro";
+---
+<BaseLayout title="About — Historical Translation Project™">
+  <Container class="pt-14">
+    <SectionHeading
+      title="About"
+      lede="The Historical Translation Project™ researches ancient remedies across global history and translates enduring principles into modern, responsible wellness education and botanical formulation architecture."
+    />
+
+    <div class="grid gap-6 lg:grid-cols-2">
+      <Card class="p-8">
+        <h2 class="font-serif text-2xl text-white">Mission</h2>
+        <ul class="mt-6 space-y-3">
+          {[
+            "Continue researching classical medical traditions",
+            "Translate doctrine into modern biological systems",
+            "Publish structured educational works",
+            "Maintain scalable formulation framework"
+          ].map((item) => (
+            <li class="flex gap-3">
+              <span class="mt-[10px] h-2 w-2 rounded-full bg-gold-500"></span>
+              <span class="text-white/78 leading-relaxed">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </Card>
+
+      <Card class="p-8" id="method">
+        <h2 class="font-serif text-2xl text-white">Method</h2>
+        <div class="mt-5 prose-ish space-y-4">
+          <p>
+            We conduct structured research into classical medical traditions and translate enduring principles into modern biological frameworks.
+          </p>
+          <p>
+            Our formulations bridge time-tested medical doctrine with contemporary scientific literature—integrating historically validated practices with current data and physiological insight.
+          </p>
+          <p>
+            We prioritize pathway relevance, extract standardization, and responsible safety framing, within a modular architecture designed to prevent redundancy.*
+          </p>
+        </div>
+      </Card>
+    </div>
+  </Container>
+</BaseLayout>

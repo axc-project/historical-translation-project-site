@@ -1,0 +1,26 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/Container.astro";
+import Card from "@components/Card.astro";
+import SectionHeading from "@components/SectionHeading.astro";
+import Button from "@components/Button.astro";
+---
+<BaseLayout title="Shop — Historical Translation Project™">
+  <Container class="pt-14">
+    <SectionHeading
+      title="Shop"
+      lede="Store coming soon. Request purchase information via email."
+    />
+
+    <Card class="p-10">
+      <p class="text-white/75 leading-relaxed max-w-2xl">
+        We are preparing a structured storefront aligned with our institutional standards and responsible labeling guidance.
+        In the meantime, please email us for availability and purchase details.
+      </p>
+
+      <div class="mt-8">
+        <Button href="mailto:info@axellaresearch.com" variant="primary">Request Purchase Information</Button>
+      </div>
+    </Card>
+  </Container>
+</BaseLayout>

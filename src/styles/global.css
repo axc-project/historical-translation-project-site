@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #071523;
+  --panel: #0c2238;
+  --panel2: #0f2a44;
+  --gold: #d4af37;
+  --gold-muted: #bfa14a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: radial-gradient(1200px 700px at 20% 10%, rgba(212,175,55,0.06), transparent 60%),
+              radial-gradient(900px 500px at 80% 30%, rgba(212,175,55,0.05), transparent 55%),
+              linear-gradient(180deg, #071523 0%, #06111c 100%);
+  color: rgba(255,255,255,.88);
+}
+
+::selection {
+  background: rgba(212,175,55,.22);
+}
+
+a {
+  text-decoration: none;
+}
+
+.prose-ish p {
+  color: rgba(255,255,255,.80);
+  line-height: 1.85;
+}
+
+.prose-ish li {
+  color: rgba(255,255,255,.80);
+  line-height: 1.85;
+}
+
+.gold-hairline {
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,.45), transparent);
+  height: 1px;
+}
+
+/* Mobile friendly tweaks */
+img { max-width: 100%; height: auto; }

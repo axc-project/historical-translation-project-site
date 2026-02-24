@@ -1,0 +1,140 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Container from "@components/Container.astro";
+import Card from "@components/Card.astro";
+import Button from "@components/Button.astro";
+import { formulas, getFormulaBySlug } from "@data/formulas";
+
+export function getStaticPaths() {
+  return formulas.map((f) => ({
+    params: { slug: f.slug }
+  }));
+}
+
+const { slug } = Astro.params;
+const formula = getFormulaBySlug(slug);
+
+if (!formula) {
+  throw new Error(`Formula not found: ${slug}`);
+}
+---
+<BaseLayout title={`${formula.name} — Historical Translation Project™`}>
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0">
+      {formula.image && (
+        <img src={formula.image} alt="" class="h-full w-full object-cover opacity-40" />
+      )}
+      <div class="absolute inset-0 bg-gradient-to-b from-navy-900/80 via-navy-900/75 to-navy-900"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(212,175,55,0.14),transparent_52%)]"></div>
+    </div>
+
+    <Container class="relative py-14 sm:py-20">
+      <div class="max-w-3xl">
+        <div class="text-[11px] uppercase tracking-[0.25em] text-gold-450/90">
+          {formula.category}
+        </div>
+        <h1 class="mt-4 font-serif text-4xl sm:text-5xl tracking-tight text-white">
+          {formula.name}
+        </h1>
+        <p class="mt-6 text-white/78 leading-relaxed text-base sm:text-lg">
+          {formula.heroTagline}
+        </p>
+
+        <div class="mt-10 flex flex-wrap gap-4">
+          <Button href="/formulations" variant="secondary">Back to Formulations</Button>
+          <Button href="/contact" variant="primary">Research Inquiry</Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+
+  <Container class="mt-12">
+    <div class="grid gap-8 lg:grid-cols-3">
+      <div class="lg:col-span-2 space-y-8">
+        <Card class="p-8">
+          <h2 class="font-serif text-2xl text-white">Historical Foundation</h2>
+          <div class="mt-5 prose-ish space-y-4">
+            {formula.historicalFoundation.split("\n\n").map((para) => (
+              <p>{para}</p>
+            ))}
+          </div>
+        </Card>
+
+        <Card class="p-8">
+          <h2 class="font-serif text-2xl text-white">Mechanism Focus</h2>
+          <ul class="mt-5 space-y-3">
+            {formula.mechanismFocus.map((m) => (
+              <li class="flex gap-3">
+                <span class="mt-[10px] h-2 w-2 rounded-full bg-gold-500"></span>
+                <span class="text-white/78 leading-relaxed">{m}</span>
+              </li>
+            ))}
+          </ul>
+        </Card>
+
+        {formula.stacking && (
+          <Card class="p-8">
+            <h2 class="font-serif text-2xl text-white">Stacking Guidance</h2>
+            <ul class="mt-5 space-y-3">
+              {formula.stacking.map((s) => (
+                <li class="flex gap-3">
+                  <span class="mt-[10px] h-2 w-2 rounded-full bg-gold-500"></span>
+                  <span class="text-white/78 leading-relaxed">{s}</span>
+                </li>
+              ))}
+            </ul>
+            {formula.addOn && (
+              <div class="mt-6 rounded-xl2 border border-gold-500/15 bg-white/5 p-5">
+                <div class="text-[11px] uppercase tracking-[0.25em] text-white/70">Optional Add-On</div>
+                <div class="mt-2 text-white/80 leading-relaxed">{formula.addOn}</div>
+              </div>
+            )}
+          </Card>
+        )}
+      </div>
+
+      <div class="space-y-8">
+        <Card class="p-7">
+          <div class="text-[11px] uppercase tracking-[0.25em] text-white/70">Serving</div>
+          <div class="mt-3 text-white font-serif text-xl">{formula.serving}</div>
+
+          <div class="mt-7 text-[11px] uppercase tracking-[0.25em] text-white/70">Ingredients</div>
+          <div class="mt-4 space-y-3">
+            {formula.ingredients.map((ing) => (
+              <div class="flex items-start justify-between gap-4 rounded-xl2 border border-white/10 bg-white/5 p-4">
+                <div class="text-white/80 leading-snug">{ing.name}</div>
+                <div class="text-white/70 whitespace-nowrap">{ing.amount}</div>
+              </div>
+            ))}
+          </div>
+        </Card>
+
+        {formula.safety && (
+          <Card class="p-7">
+            <div class="text-[11px] uppercase tracking-[0.25em] text-white/70">Safety</div>
+            <ul class="mt-4 space-y-3">
+              {formula.safety.map((w) => (
+                <li class="text-white/78 leading-relaxed">
+                  <span class="text-gold-500">•</span> {w}
+                </li>
+              ))}
+            </ul>
+          </Card>
+        )}
+
+        <Card class="p-7">
+          <div class="text-[11px] uppercase tracking-[0.25em] text-white/70">Next Step</div>
+          <p class="mt-3 text-white/75 leading-relaxed">
+            For research inquiries or program updates, contact:
+          </p>
+          <a class="mt-4 block text-white hover:text-gold-500 transition" href="mailto:info@axellaresearch.com">
+            info@axellaresearch.com
+          </a>
+          <div class="mt-6">
+            <Button href="/contact" variant="primary">Contact</Button>
+          </div>
+        </Card>
+      </div>
+    </div>
+  </Container>
+</BaseLayout>
