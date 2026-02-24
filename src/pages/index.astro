@@ -3,9 +3,6 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import Container from "@components/Container.astro";
 import Button from "@components/Button.astro";
 import Card from "@components/Card.astro";
-import SectionHeading from "@components/SectionHeading.astro";
-import { formulas } from "@data/formulas";
-import { books } from "@data/books";
 
 const heroImage = "/images/hero-landscape.png";
 ---
@@ -14,72 +11,141 @@ const heroImage = "/images/hero-landscape.png";
   title="Historical Translation Project™"
   description="Research-driven botanical frameworks rooted in historical texts and aligned with contemporary safety standards."
 >
-
   <!-- HERO -->
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-0 pointer-events-none">
-      <div
-        class="h-full w-full"
-        style={`background-image:url(${heroImage}); background-size:cover; background-position:center; opacity:.85;`}
-      ></div>
+  <section class="hero">
+    <div class="heroBg" style={`background-image:url(${heroImage});`}></div>
+    <div class="heroOverlay"></div>
+    <div class="heroFade"></div>
 
-      <div class="absolute inset-0 heroOverlay"></div>
-    </div>
+    <Container class="heroInner">
+      <div class="heroKicker">Historical Translation Project™</div>
 
-    <Container class="relative py-16 md:py-24">
-      <div class="max-w-3xl">
-        <div class="text-[12px] uppercase tracking-[0.28em] text-white/70">
-          Historical Translation Project™
-        </div>
+      <h1 class="heroTitle">
+        Translating Classical Medicine Into<br />Structured Modern Systems
+      </h1>
 
-        <h1 class="mt-5 font-serif text-4xl sm:text-5xl text-white leading-tight">
-          Translating Classical Medicine Into Structured Modern Systems
-        </h1>
+      <p class="heroSub">
+        Research-driven botanical frameworks rooted in historical texts and aligned with contemporary safety standards.
+      </p>
 
-        <p class="mt-6 text-white/85 text-lg max-w-2xl">
-          Research-driven botanical frameworks rooted in historical texts and aligned with contemporary safety standards.
-        </p>
-
-        <div class="mt-10 flex gap-4 flex-wrap">
-          <Button href="/formulations" variant="primary">Explore Formulations</Button>
-          <Button href="/publications" variant="secondary">View Publications</Button>
-        </div>
+      <div class="heroActions">
+        <Button href="/formulations" variant="primary">Explore Formulations</Button>
+        <Button href="/publications" variant="secondary">View Publications</Button>
       </div>
     </Container>
-
-    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-b from-transparent via-[rgba(246,241,230,.45)] to-[rgb(246,241,230)]"></div>
   </section>
 
-  <!-- FORMULATIONS -->
-  <section class="parchment-section">
+  <!-- HOME HUB -->
+  <section class="parchment">
     <Container>
-      <SectionHeading
-        title="Formulations"
-        lede="A modular architecture: foundational cores first, with optional add-ons only when additional support is desired.*"
-      />
+      <header class="hubHeader">
+        <div class="hubKicker">Start Here</div>
+        <h2 class="hubTitle">Browse the Project</h2>
+        <p class="hubSub">
+          Explore our formulation systems, foundational publications, and research notes—each translating historical doctrine into modern structure/function frameworks.*
+        </p>
+      </header>
 
-      <div class="grid gap-6 md:grid-cols-2">
-        {formulas.map((f) => (
-          <Card class="p-7 card-hover">
-            <div class="flex justify-between gap-6">
-              <div>
-                <div class="text-[11px] uppercase tracking-[0.22em] text-gold-500">
-                  {f.category}
-                </div>
-                <h3 class="mt-3 font-serif text-2xl">{f.name}</h3>
-                <p class="mt-3">{f.heroTagline}</p>
-              </div>
+      <div class="hubGrid">
+        <!-- FORMULATIONS -->
+        <Card variant="parchment" href="/formulations" ariaLabel="Go to formulations" class="hubCard">
+          <div class="hubEyebrow">Formulations</div>
+          <div class="hubCardTitle">Botanical Program Systems</div>
+          <p class="hubCardText">
+            A modular architecture: foundational cores first, with optional add-ons only when additional support is desired.*
+          </p>
+          <ul class="hubBullets">
+            <li>Structured ingredient rationale</li>
+            <li>Downloadable dossiers (PDF links)</li>
+            <li>Purchase links (Shopify placeholders)</li>
+          </ul>
+          <div class="hubCTA">Explore Programs →</div>
+        </Card>
 
-              {f.bottleImage && (
-                <div class="hidden sm:block w-20 h-20">
-                  <img src={f.bottleImage} class="bottleImg object-contain w-full h-full" />
-                </div>
-              )}
-            </div>
-          </Card>
-        ))}
+        <!-- PUBLICATIONS -->
+        <Card variant="parchment" href="/publications" ariaLabel="Go to publications" class="hubCard">
+          <div class="hubEyebrow">Publications</div>
+          <div class="hubCardTitle">Foundational Texts</div>
+          <p class="hubCardText">
+            Our work begins with texts. Each publication becomes a foundation for responsible translation into modern biological frameworks.
+          </p>
+          <ul class="hubBullets">
+            <li>Amazon purchase placeholders</li>
+            <li>Conceptual frameworks & excerpts</li>
+            <li>Scalable library of future titles</li>
+          </ul>
+          <div class="hubCTA">View Books →</div>
+        </Card>
+
+        <!-- RESEARCH -->
+        <Card variant="parchment" href="/research" ariaLabel="Go to research" class="hubCard hubCardWide">
+          <div class="hubEyebrow">Research</div>
+          <div class="hubCardTitle">Educational Translational Notes</div>
+          <p class="hubCardText">
+            We discuss disease categories as historical and biological context only—without product treatment claims.
+            Our formulations are presented using conservative structure/function language and responsible safety framing.*
+          </p>
+          <div class="hubCTA">Read Research Notes →</div>
+        </Card>
       </div>
+
+      <p class="footnote">
+        *Educational content only; not medical advice. These statements have not been evaluated by the Food and Drug Administration.
+        This product is not intended to diagnose, treat, cure, or prevent any disease.
+      </p>
     </Container>
   </section>
-
 </BaseLayout>
+
+<style>
+  /* HERO */
+  .hero { position: relative; overflow: hidden; background: #071523; }
+  .heroBg { position:absolute; inset:0; background-size:cover; background-position:center; transform: scale(1.02); }
+  .heroOverlay { position:absolute; inset:0; background: radial-gradient(900px 520px at 26% 18%, rgba(7,21,35,.18), rgba(7,21,35,.58)); }
+  /* keep hero readable without washing it out */
+  .heroFade { position:absolute; left:0; right:0; bottom:0; height: 22%; background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(244,239,228,.55)); }
+  .heroInner { position: relative; padding: 88px 0 96px; }
+  .heroKicker { letter-spacing: .18em; text-transform: uppercase; font-size: 12px; color: rgba(255,255,255,.78); }
+  .heroTitle { margin-top: 14px; font-family: ui-serif, Georgia, "Times New Roman", Times, serif; font-weight: 600; font-size: clamp(34px, 4.2vw, 56px); line-height: 1.04; color: #fff; }
+  .heroSub { margin-top: 16px; max-width: 62ch; color: rgba(255,255,255,.88); font-size: 16px; line-height: 1.6; }
+  .heroActions { margin-top: 22px; display:flex; gap:12px; flex-wrap: wrap; }
+
+  /* HUB */
+  .parchment {
+    background:
+      radial-gradient(1200px 700px at 28% 0%, rgba(212,175,55,.10), transparent 60%),
+      linear-gradient(#f4efe4, #efe7d7);
+    padding: 60px 0;
+  }
+
+  .hubHeader { max-width: 82ch; }
+  .hubKicker { letter-spacing:.18em; text-transform:uppercase; font-size: 12px; color: rgba(7,21,35,.62); }
+  .hubTitle { margin-top: 10px; font-family: ui-serif, Georgia, Times, serif; font-size: 34px; color: #071523; }
+  .hubSub { margin-top: 10px; color: rgba(7,21,35,.78); line-height: 1.6; }
+
+  .hubGrid {
+    margin-top: 22px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .hubCard { padding: 22px; border-radius: 22px; }
+  .hubEyebrow { letter-spacing:.16em; text-transform:uppercase; font-size: 12px; color: rgba(7,21,35,.60); }
+  .hubCardTitle { margin-top: 8px; font-family: ui-serif, Georgia, Times, serif; font-size: 26px; color: #071523; }
+  .hubCardText { margin-top: 10px; color: rgba(7,21,35,.78); line-height: 1.6; }
+
+  .hubBullets { margin-top: 14px; padding-left: 18px; color: rgba(7,21,35,.86); line-height: 1.6; }
+  .hubBullets li { margin-bottom: 6px; }
+
+  .hubCTA { margin-top: 16px; font-weight: 800; color: #0b2a44; }
+
+  .hubCardWide { grid-column: 1 / -1; }
+
+  .footnote { margin-top: 22px; color: rgba(7,21,35,.62); font-size: 12px; line-height: 1.55; max-width: 95ch; }
+
+  @media (max-width: 900px) {
+    .hubGrid { grid-template-columns: 1fr; }
+    .hubCardWide { grid-column: auto; }
+  }
+</style>
