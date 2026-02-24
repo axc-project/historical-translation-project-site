@@ -1,5 +1,5 @@
 /* ============================= */
-/* Base Typography & Layout      */
+/* Base Setup                    */
 /* ============================= */
 
 html {
@@ -7,13 +7,26 @@ html {
 }
 
 body {
+  background: #f6f1e6; /* parchment */
+  color: #071523;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #f6f1e6; /* parchment cream */
-  color: rgba(7, 21, 35, 0.92);
 }
 
 /* ============================= */
-/* Parchment Background System   */
+/* HERO OVERLAY (Balanced)       */
+/* ============================= */
+
+.heroOverlay {
+  background: linear-gradient(
+    180deg,
+    rgba(7,21,35,0.18) 0%,
+    rgba(7,21,35,0.28) 55%,
+    rgba(246,241,230,0.70) 100%
+  );
+}
+
+/* ============================= */
+/* Cream Sections (Scoped Navy)  */
 /* ============================= */
 
 .parchment-section {
@@ -24,25 +37,17 @@ body {
   );
 }
 
-.parchment-text {
-  color: rgba(7, 21, 35, 0.92);
+.parchment-section h1,
+.parchment-section h2,
+.parchment-section h3,
+.parchment-section h4,
+.parchment-section h5,
+.parchment-section h6 {
+  color: #071523;
 }
 
-.parchment-text-muted {
-  color: rgba(7, 21, 35, 0.65);
-}
-
-/* ============================= */
-/* HERO OVERLAY (Critical Fix)   */
-/* ============================= */
-
-.heroOverlay {
-  background: linear-gradient(
-    180deg,
-    rgba(7, 21, 35, 0.25) 0%,
-    rgba(7, 21, 35, 0.35) 50%,
-    rgba(246, 241, 230, 0.90) 100%
-  );
+.parchment-section p {
+  color: rgba(7,21,35,0.88);
 }
 
 /* ============================= */
@@ -52,69 +57,49 @@ body {
 .btn-primary {
   background-color: #d4af37;
   color: #071523;
-  transition: all 0.25s ease;
+  transition: all .25s ease;
 }
 
 .btn-primary:hover {
   background-color: #e0be54;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
+  box-shadow: 0 8px 25px rgba(212,175,55,0.35);
 }
 
 .btn-secondary {
-  background-color: rgba(255,255,255,0.85);
+  background-color: rgba(255,255,255,.85);
   color: #071523;
-  transition: all 0.25s ease;
+  transition: all .25s ease;
 }
 
 .btn-secondary:hover {
   background-color: white;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 20px rgba(0,0,0,.15);
 }
 
 /* ============================= */
-/* Card Light-Up Interaction     */
+/* Card Hover                    */
 /* ============================= */
 
 .card-hover {
-  transition: all 0.3s ease;
-  border: 1px solid rgba(7,21,35,0.08);
+  transition: all .3s ease;
+  border: 1px solid rgba(7,21,35,.08);
 }
 
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
-  border-color: rgba(212,175,55,0.35);
+  box-shadow: 0 18px 40px rgba(0,0,0,.12);
+  border-color: rgba(212,175,55,.35);
 }
 
 /* ============================= */
-/* Click Highlight Interaction   */
-/* ============================= */
-
-a,
-button {
-  transition: all 0.2s ease;
-}
-
-a:active,
-button:active {
-  transform: scale(0.97);
-}
-
-a:focus,
-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(212,175,55,0.35);
-}
-
-/* ============================= */
-/* Bottle Image Brightness Fix   */
+/* Bottle Brightness             */
 /* ============================= */
 
 .bottleImg {
   filter: brightness(1.15) contrast(1.05);
-  transition: transform 0.3s ease, filter 0.3s ease;
+  transition: transform .3s ease, filter .3s ease;
 }
 
 .bottleImg:hover {
@@ -123,12 +108,12 @@ button:focus {
 }
 
 /* ============================= */
-/* Navigation Fix                */
+/* Nav                           */
 /* ============================= */
 
 nav a {
-  color: rgba(255,255,255,0.85);
-  transition: color 0.2s ease;
+  color: rgba(255,255,255,.85);
+  transition: color .2s ease;
 }
 
 nav a:hover {
@@ -144,32 +129,9 @@ section {
   padding-bottom: 3rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width:768px) {
   section {
     padding-top: 5rem;
     padding-bottom: 5rem;
   }
-}
-/* ============================= */
-/* Cream Background Typography   */
-/* ============================= */
-
-/* All standard text on parchment */
-body {
-  color: #071523;
-}
-
-/* Headings on cream background */
-h1, h2, h3, h4, h5, h6 {
-  color: #071523;
-}
-
-/* Paragraphs */
-p {
-  color: rgba(7, 21, 35, 0.9);
-}
-
-/* Muted text */
-.text-muted {
-  color: rgba(7, 21, 35, 0.65);
 }
