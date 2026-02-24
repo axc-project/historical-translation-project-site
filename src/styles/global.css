@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --parchment: #f5efe4;
+  --parchment-2: #efe5d6;
+  --parchment-3: #e6dac7;
+  --navy: #071523;
+  --navy-2: #0c2238;
+  --gold: #d4af37;
+
+  --cream: #f6f1e6;
+  --cream-2: #efe7d6;
+  --cream-3: #e6dcc8;
+  --navy: #071523;
+  --navy-2: #0c2238;
+  --gold: #d4af37;
+
+  --bg: #071523;
+  --panel: #0c2238;
+  --panel2: #0f2a44;
+  --gold: #d4af37;
+  --gold-muted: #bfa14a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: radial-gradient(1200px 700px at 20% 10%, rgba(212,175,55,0.06), transparent 60%),
+              radial-gradient(900px 500px at 80% 30%, rgba(212,175,55,0.05), transparent 55%),
+              linear-gradient(180deg, #071523 0%, #06111c 100%);
+  color: rgba(255,255,255,.88);
+}
+
+::selection {
+  background: rgba(212,175,55,.22);
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Subtle "press" interaction */
+.pressable {
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease, filter 140ms ease;
+}
+
+.pressable:hover {
+  transform: translateY(-1px);
+}
+
+.pressable:active {
+  transform: translateY(0px) scale(0.99);
+  filter: brightness(1.04);
+}
+
+.prose-ish p {
+  color: rgba(255,255,255,.80);
+  line-height: 1.85;
+}
+
+.prose-ish li {
+  color: rgba(255,255,255,.80);
+  line-height: 1.85;
+}
+
+.gold-hairline {
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,.45), transparent);
+  height: 1px;
+}
+
+/* Mobile friendly tweaks */
+img { max-width: 100%; height: auto; }
+
+/* Cream + navy system */
+.cream-section {
+  background: radial-gradient(1200px 500px at 50% 0%, rgba(212,175,55,.10), transparent 60%),
+              linear-gradient(180deg, var(--cream) 0%, #ffffff 70%);
+}
+.cream-panel {
+  background: linear-gradient(180deg, rgba(246,241,230,.98) 0%, rgba(239,231,214,.96) 100%);
+  border: 1px solid rgba(14,36,58,.10);
+  box-shadow: 0 20px 50px rgba(0,0,0,.12);
+}
+.cream-text {
+  color: rgba(7,21,35,.92);
+}
+
+/* Reduce visible white rectangles on bottle renders (works best if images have white BG) */
+.bottle-img {
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 18px 28px rgba(0,0,0,.30)) contrast(1.08) saturate(1.05);
+}
+
+/* Parchment editorial base */
+.parchment-section{
+  background:
+    radial-gradient(1200px 500px at 50% 0%, rgba(212,175,55,.12), transparent 60%),
+    linear-gradient(180deg, var(--parchment) 0%, #ffffff 75%);
+}
+.parchment-panel{
+  background: linear-gradient(180deg, rgba(245,239,228,.98) 0%, rgba(239,229,214,.96) 100%);
+  border: 1px solid rgba(7,21,35,.10);
+  box-shadow: 0 18px 44px rgba(0,0,0,.10);
+}
+.parchment-text{ color: rgba(7,21,35,.92); }
+.parchment-muted{ color: rgba(7,21,35,.70); }
+
+/* Hero overlay: readable but NOT dark */
+.heroOverlay{
+  background: linear-gradient(
+    180deg,
+    rgba(7,21,35,.22) 0%,
+    rgba(7,21,35,.28) 55%,
+    rgba(245,239,228,.92) 100%
+  );
+}
+
+/* Bottles: float on parchment, no card/box */
+.bottleImg{
+  display:block;
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 22px 32px rgba(0,0,0,.22)) contrast(1.05) saturate(1.04);
+}

@@ -1,0 +1,27 @@
+---
+import SiteHeader from "@components/SiteHeader.astro";
+import SiteFooter from "@components/SiteFooter.astro";
+import "@styles/global.css";
+
+const {
+  title = "Historical Translation Project™",
+  description = "Translating classical medicine into structured modern systems.",
+  logoSrc = "/images/htp-logo.png"
+} = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#071523" />
+  </head>
+  <body class="font-sans">
+    <SiteHeader logoSrc={logoSrc} />
+    <main>
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>
