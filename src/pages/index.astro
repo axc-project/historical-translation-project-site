@@ -1,0 +1,115 @@
+---
+import Base from "../layouts/Base.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import { SITE, FORMULAS } from "../data/site";
+---
+<Base title="Historical Translation Project™" description={SITE.tagline}>
+  <section class="relative overflow-hidden">
+    <div class="relative bg-navy text-parchment">
+      <div class="absolute inset-0 opacity-60"
+           style={`background-image:
+             linear-gradient(180deg, rgba(11,26,42,.78), rgba(11,26,42,.35) 55%, rgba(246,240,230,1) 100%),
+             url('/images/hero-mountains.jpg');
+           background-size: cover;
+           background-position: center;`}></div>
+      <div class="relative mx-auto max-w-6xl px-5 pt-14 pb-14 sm:pt-20 sm:pb-20">
+        <div class="flex flex-col items-center text-center">
+          <div class="inline-flex items-center gap-2 rounded-full bg-white/10 ring-1 ring-white/15 px-4 py-2">
+            <span class="w-2 h-2 rounded-full bg-gold"></span>
+            <span class="tracking-wide text-parchment/90">{SITE.tagline}</span>
+          </div>
+
+          <h1 class="mt-10 font-display text-4xl sm:text-6xl leading-[1.06] text-parchment drop-shadow-sm">
+            A research‑first approach to everyday<br class="hidden sm:block" />
+            botanical wellness.
+          </h1>
+
+          <p class="mt-6 max-w-2xl text-xl text-parchment/85 leading-relaxed">
+            We translate preventive principles from across global medical history into modern, evidence‑forward educational dossiers—and thoughtfully designed botanical formulations framed in compliant structure/function language.
+          </p>
+
+          <div class="mt-10 flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+            <a href="/formulations" class="no-underline hover:no-underline inline-flex justify-center rounded-md bg-gold text-ink font-semibold px-8 py-3 shadow-card hover:bg-gold2 transition">
+              Explore Formulations
+            </a>
+            <a href="/publications" class="no-underline hover:no-underline inline-flex justify-center rounded-md bg-white/10 ring-1 ring-white/20 text-parchment font-semibold px-8 py-3 hover:bg-white/15 transition">
+              Download Dossiers
+            </a>
+          </div>
+
+          <p class="mt-6 text-sm text-parchment/65">
+            Educational content only; not medical advice. Supplements are not intended to diagnose, treat, cure, or prevent disease.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mx-auto max-w-6xl px-5 -mt-8 sm:-mt-12 relative">
+      <div class="grid md:grid-cols-3 gap-6 bg-parchment rounded-2xl shadow-soft ring-1 ring-black/5 p-6 sm:p-8">
+        <a href="/research" class="group rounded-xl bg-white/60 hover:bg-white/80 transition p-5 ring-1 ring-black/5">
+          <div class="font-display text-2xl text-ink">Research</div>
+          <p class="mt-2 text-ink/70 text-lg">Historical textual analysis</p>
+          <div class="mt-4">
+            <img src="/images/open-book.jpg" alt="Open book" class="rounded-lg w-full h-40 object-cover ring-1 ring-black/10" />
+          </div>
+        </a>
+        <a href="/publications" class="group rounded-xl bg-white/60 hover:bg-white/80 transition p-5 ring-1 ring-black/5">
+          <div class="font-display text-2xl text-ink">Publications</div>
+          <p class="mt-2 text-ink/70 text-lg">Foundational publications</p>
+          <div class="mt-4 flex items-center justify-center bg-parchment2 rounded-lg h-40 ring-1 ring-black/10 overflow-hidden">
+            <img src="/images/rambam-bookcover.jpg" alt="Rambam's Guide to Health cover" class="h-44 object-contain" />
+          </div>
+        </a>
+        <a href="/formulations" class="group rounded-xl bg-white/60 hover:bg-white/80 transition p-5 ring-1 ring-black/5">
+          <div class="font-display text-2xl text-ink">Formulations</div>
+          <p class="mt-2 text-ink/70 text-lg">Botanical formulation systems</p>
+          <div class="mt-4">
+            <img src="/images/brand-collage.jpg" alt="Formulation imagery" class="rounded-lg w-full h-40 object-cover ring-1 ring-black/10" />
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-5 pt-16 sm:pt-20 pb-12">
+    <SectionTitle
+      eyebrow="Programs"
+      title="Explore the current formulations"
+      subtitle="Our catalog will expand as we publish more books and research new traditions. Each product page includes: an overview, historical foundations, modern evidence signals, a clean ingredient story, and optional add‑on recommendations."
+    />
+    <div class="mt-10 grid md:grid-cols-3 gap-6">
+      {FORMULAS.map((f) => (
+        <div class="rounded-2xl bg-white/70 ring-1 ring-black/5 shadow-card overflow-hidden">
+          <div class="p-6">
+            <div class="font-display text-2xl text-ink">{f.name}</div>
+            <div class="mt-1 text-ink/60">{f.focus}</div>
+            <p class="mt-4 text-lg text-ink/75 leading-relaxed">{f.short}</p>
+            <div class="mt-6 flex items-center gap-3">
+              <a class="no-underline hover:no-underline inline-flex rounded-md bg-parchment2 px-5 py-2 ring-1 ring-black/10 shadow-sm hover:bg-parchment transition" href={`/formulations/${f.slug}`}>
+                Learn More
+              </a>
+              <a class="text-ink/70 hover:text-ink" href="/shop">Purchase</a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden bg-navy text-parchment">
+    <div class="absolute inset-0 opacity-55"
+         style="background-image: linear-gradient(90deg, rgba(11,26,42,.92), rgba(11,26,42,.55) 55%, rgba(11,26,42,.2)), url('/images/brand-collage.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="relative mx-auto max-w-6xl px-5 py-16 sm:py-20">
+      <div class="max-w-2xl">
+        <div class="font-display text-3xl sm:text-4xl text-gold2">Ongoing research</div>
+        <p class="mt-5 text-xl text-parchment/85 leading-relaxed">
+          Expanding beyond Mediterranean systems into additional classical medical traditions and their modern interpretations.
+        </p>
+        <div class="mt-8 flex gap-3 flex-col sm:flex-row">
+          <a href="/about" class="no-underline hover:no-underline inline-flex justify-center rounded-md bg-gold text-ink font-semibold px-8 py-3 hover:bg-gold2 transition">Learn More</a>
+          <a href="/publications" class="no-underline hover:no-underline inline-flex justify-center rounded-md bg-white/10 ring-1 ring-white/20 text-parchment font-semibold px-8 py-3 hover:bg-white/15 transition">View Publications</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

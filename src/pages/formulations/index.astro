@@ -1,0 +1,30 @@
+---
+import Base from "../../layouts/Base.astro";
+import SectionTitle from "../../components/SectionTitle.astro";
+import { FORMULAS } from "../../data/site";
+---
+<Base title="Formulations — Historical Translation Project™">
+  <section class="mx-auto max-w-6xl px-5 py-14 sm:py-20">
+    <SectionTitle
+      eyebrow="Formulations"
+      title="Explore the current formulations"
+      subtitle="Our catalog will expand as we publish more books and research new traditions. Each product page includes: an overview, historical foundations, modern evidence signals, a clean ingredient story, and optional add‑on recommendations."
+    />
+
+    <div class="mt-12 grid md:grid-cols-3 gap-6">
+      {FORMULAS.map((f) => (
+        <div class="rounded-2xl bg-white/70 ring-1 ring-black/5 shadow-card p-7">
+          <div class="font-display text-2xl">{f.name}</div>
+          <div class="mt-1 text-ink/60">{f.focus}</div>
+          <p class="mt-4 text-lg text-ink/75 leading-relaxed">{f.short}</p>
+          <div class="mt-7 flex items-center gap-4">
+            <a class="no-underline hover:no-underline inline-flex rounded-md bg-parchment2 px-5 py-2 ring-1 ring-black/10 hover:bg-parchment transition" href={`/formulations/${f.slug}`}>
+              Learn More
+            </a>
+            <a class="text-ink/70 hover:text-ink" href="/shop">Purchase</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,10 @@
+---
+const { size = 56, class: className = "" } = Astro.props;
+---
+<div class={`flex items-center gap-3 ${className}`}>
+  <img src="/images/htp-logo.png" alt="Historical Translation Project logo" width={size} height={size} class="rounded-md shadow-sm"/>
+  <div class="leading-tight">
+    <div class="font-display tracking-wide text-gold2 text-xl sm:text-2xl">Historical Translation Project</div>
+    <div class="text-xs sm:text-sm tracking-[.28em] text-gold/90 uppercase">Project</div>
+  </div>
+</div>

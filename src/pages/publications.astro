@@ -1,0 +1,38 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE } from "../data/site";
+---
+<Base title="Publications — Historical Translation Project™">
+  <section class="mx-auto max-w-6xl px-5 py-14 sm:py-20">
+    <div class="grid lg:grid-cols-2 gap-10 items-start">
+      <div>
+        <div class="font-display text-4xl sm:text-5xl text-ink leading-tight">Publications</div>
+        <p class="mt-5 text-xl text-ink/75 leading-relaxed">
+          Each publication anchors a research program and a set of structured modern translations. New books expand the library and the formulation catalog over time.
+        </p>
+
+        <div class="mt-10 rounded-2xl bg-white/70 ring-1 ring-black/5 shadow-card p-8">
+          <div class="font-display text-3xl">Rambam’s Guide to Health</div>
+          <p class="mt-3 text-lg text-ink/75">
+            A practical modern interpretation of medieval preventive medicine—translated into contemporary, structured guidance.
+          </p>
+          <div class="mt-6 flex flex-col sm:flex-row gap-3">
+            <a href={SITE.amazonBookUrl} class="no-underline hover:no-underline inline-flex justify-center rounded-md bg-gold text-ink font-semibold px-7 py-3 hover:bg-gold2 transition">
+              Purchase on Amazon
+            </a>
+            <a href="/about" class="no-underline hover:no-underline inline-flex justify-center rounded-md bg-parchment2 ring-1 ring-black/10 px-7 py-3 hover:bg-parchment transition">
+              About the project
+            </a>
+          </div>
+          <p class="mt-5 text-sm text-ink/60">
+            Amazon checkout is active now. Shopify store will be enabled later for formulations and vetted add‑ons.
+          </p>
+        </div>
+      </div>
+
+      <div class="rounded-2xl bg-parchment2 ring-1 ring-black/10 shadow-soft p-6 flex items-center justify-center">
+        <img src="/images/rambam-bookcover.jpg" alt="Book cover" class="h-[560px] max-h-[70vh] object-contain" />
+      </div>
+    </div>
+  </section>
+</Base>
