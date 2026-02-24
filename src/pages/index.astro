@@ -17,21 +17,29 @@ const heroImage = "/images/hero-landscape.png"; // included; replace as desired
     <div class="absolute inset-0 pointer-events-none">
       <div
         class="h-full w-full"
-        style={`background-image:url(${heroImage}); background-size:cover; background-position:center; opacity:0.58;`}
+        style={`background-image:url(${heroImage}); background-size:cover; background-position:center; opacity:0.80;`}
       ></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-navy-900/25 via-navy-900/22 to-navy-900/30"></div>
+
+      <!-- Use the CSS-defined overlay (readable but not overly dark) -->
+      <div class="absolute inset-0 heroOverlay"></div>
+
+      <!-- subtle gold glow -->
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(212,175,55,0.22),transparent_45%)]"></div>
     </div>
 
     <Container class="relative py-14 sm:py-20 md:py-24 pointer-events-auto">
       <div class="max-w-3xl">
-        <div class="text-[12px] uppercase tracking-[0.28em] parchment-text/75">
+        <div class="text-[12px] uppercase tracking-[0.28em] text-white/70">
           Historical Translation Project™
         </div>
-        <h1 class="mt-5 font-serif text-4xl sm:text-5xl tracking-tight parchment-text">
+
+        <!-- Force HERO heading to white -->
+        <h1 class="mt-5 font-serif text-4xl sm:text-5xl tracking-tight text-white">
           Translating Classical Medicine Into Structured Modern Systems
         </h1>
-        <p class="mt-6 parchment-text/78 leading-relaxed text-base sm:text-lg">
+
+        <!-- Force HERO paragraph to white -->
+        <p class="mt-6 text-white/80 leading-relaxed text-base sm:text-lg">
           Research-driven botanical frameworks rooted in historical texts and aligned with contemporary safety standards.
         </p>
 
@@ -41,11 +49,9 @@ const heroImage = "/images/hero-landscape.png"; // included; replace as desired
         </div>
       </div>
     </Container>
-  
-      <!-- cream fade -->
-      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent via-[rgba(246,241,230,.65)] to-[rgb(246,241,230)]"></div>
 
-    </div>
+    <!-- cream fade into parchment sections -->
+    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent via-[rgba(246,241,230,.65)] to-[rgb(246,241,230)]"></div>
   </section>
 
   <section class="mt-16">
@@ -83,6 +89,7 @@ const heroImage = "/images/hero-landscape.png"; // included; replace as desired
 
             <div class="mt-6 flex flex-wrap gap-3">
               <Button href={`/formulations/${f.slug}`} variant="secondary">View Program</Button>
+
               <Button
                 href={f.dossierUrl && f.dossierUrl.length ? f.dossierUrl : "#"}
                 variant="secondary"
@@ -90,6 +97,7 @@ const heroImage = "/images/hero-landscape.png"; // included; replace as desired
               >
                 Download Dossier
               </Button>
+
               <Button
                 href={f.shopUrl && f.shopUrl.length ? f.shopUrl : "#"}
                 variant="primary"
@@ -101,41 +109,6 @@ const heroImage = "/images/hero-landscape.png"; // included; replace as desired
           </Card>
         ))}
       </div>
-    </Container>
-  </section>
-
-  <section class="mt-20">
-    <Container>
-      <SectionHeading title="Our Method" />
-
-      <Card class="p-8">
-        <div class="prose-ish space-y-4">
-          <p>
-            The Historical Translation Project™ conducts structured research into classical medical traditions and translates enduring principles into modern biological frameworks.
-          </p>
-          <p>
-            Our formulations bridge time-tested medical doctrine with contemporary scientific literature. By integrating historically validated practices with current data and physiological insight, we develop targeted support supplements designed within a disciplined, modular architecture.*
-          </p>
-          <p>
-            Rather than replicate folklore or chase trends, we evaluate traditional formulations through modern scientific lenses—prioritizing pathway relevance, extract standardization, and responsible safety guidance.
-          </p>
-        </div>
-
-        <div class="mt-8 grid gap-4 md:grid-cols-2">
-          {[
-            "Historical doctrine → modern biological translation",
-            "Textual analysis integrated with contemporary peer-reviewed literature",
-            "Structured formulation design rooted in pathway-level understanding",
-            "Modular stacking architecture to prevent redundancy",
-            "Scalable framework supporting future publications and formulations"
-          ].map((item) => (
-            <div class="flex gap-3 rounded-xl2 border border-white/10 bg-white/5 p-4">
-              <div class="mt-1 h-2 w-2 rounded-full bg-gold-500"></div>
-              <div class="parchment-text/75 leading-relaxed">{item}</div>
-            </div>
-          ))}
-        </div>
-      </Card>
     </Container>
   </section>
 
@@ -155,6 +128,7 @@ const heroImage = "/images/hero-landscape.png"; // included; replace as desired
                   <img src={b.coverImage ?? ""} alt={b.title} class="h-full w-full object-cover" />
                 </div>
               </div>
+
               <div>
                 <h3 class="font-serif text-2xl parchment-text">{b.title}</h3>
                 <div class="mt-2 parchment-text/70">{b.subtitle}</div>
@@ -163,6 +137,7 @@ const heroImage = "/images/hero-landscape.png"; // included; replace as desired
                 <div class="mt-6">
                   <div class="flex flex-wrap gap-3">
                     <Button href="/publications" variant="secondary">View Publications</Button>
+
                     <Button
                       href={b.amazonUrl && b.amazonUrl.length ? b.amazonUrl : "#"}
                       variant="primary"
