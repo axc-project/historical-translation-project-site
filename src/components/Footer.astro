@@ -1,0 +1,44 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="mt-20">
+  <div class="bg-navy-950 text-white">
+    <div class="mx-auto max-w-6xl px-4 py-12">
+      <div class="grid gap-8 md:grid-cols-3">
+        <div>
+          <div class="h-serif text-xl">Historical Translation Project™</div>
+          <p class="mt-3 text-white/70 text-sm leading-relaxed">
+            We translate preventive principles from across global medical history into modern, evidence-forward education—
+            and thoughtfully designed botanical formulations framed in compliant structure/function language.
+          </p>
+        </div>
+        <div class="text-sm">
+          <div class="uppercase tracking-[0.2em] text-white/70 text-xs">Explore</div>
+          <div class="mt-3 grid gap-2">
+            <a class="text-white/85 hover:text-white" href="/research">Research</a>
+            <a class="text-white/85 hover:text-white" href="/publications">Publications</a>
+            <a class="text-white/85 hover:text-white" href="/formulations">Formulations</a>
+            <a class="text-white/85 hover:text-white" href="/method">Method</a>
+            <a class="text-white/85 hover:text-white" href="/about">About</a>
+            <a class="text-white/85 hover:text-white" href="/contact">Contact</a>
+          </div>
+        </div>
+        <div class="text-sm">
+          <div class="uppercase tracking-[0.2em] text-white/70 text-xs">Compliance</div>
+          <p class="mt-3 text-white/70 leading-relaxed">
+            Educational content only; not medical advice. Supplements are not intended to diagnose, treat, cure, or prevent disease.
+            Consult a qualified healthcare professional before use, especially if pregnant, nursing, taking medication, or managing a condition.
+          </p>
+        </div>
+      </div>
+      <div class="mt-10 hr-gold"></div>
+      <div class="mt-6 text-white/60 text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div>© {year} Historical Translation Project™. All rights reserved.</div>
+        <div class="flex gap-4">
+          <a href="/privacy" class="hover:text-white">Privacy</a>
+          <a href="/terms" class="hover:text-white">Terms</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
