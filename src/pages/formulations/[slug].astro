@@ -1,0 +1,156 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { formulas } from "../../data/formulas";
+
+export async function getStaticPaths() {
+  return formulas.map((f) => ({ params: { slug: f.slug } }));
+}
+
+const { slug } = Astro.params;
+const f = formulas.find((x) => x.slug === slug);
+if (!f) throw new Error("Formula not found");
+
+const isHeading = (s: string) => {
+  const t = s.trim();
+  if (!t) return false;
+  if (t.length > 42) return false;
+  // Heuristic: "ALL CAPS" headings used in our dataset
+  const letters = t.replace(/[^A-Za-z]/g, "");
+  if (!letters) return false;
+  return t === t.toUpperCase();
+};
+
+type Section = { title: string; lines: string[] };
+
+const sections: Section[] = [];
+let current: Section | null = null;
+
+for (const line of f.body) {
+  if (isHeading(line)) {
+    if (current) sections.push(current);
+    current = { title: line.trim(), lines: [] };
+  } else {
+    if (!current) current = { title: "OVERVIEW", lines: [] };
+    current.lines.push(line);
+  }
+}
+if (current) sections.push(current);
+
+const facts = sections.find((s) => s.title === "SUPPLEMENT FACTS");
+
+const factLines = (facts?.lines ?? []).map((x) => x.trim()).filter(Boolean);
+const servingLine = factLines.find((l) => l.toLowerCase().startsWith("serving size"));
+const otherLine = factLines.find((l) => l.toLowerCase().startsWith("other ingredients"));
+const ingredientLines = factLines
+  .filter((l) => l.includes("—"))
+  .filter((l) => !l.toLowerCase().startsWith("other ingredients"));
+
+const ingredients = ingredientLines.map((l) => {
+  const parts = l.split("—");
+  return {
+    name: parts[0].trim().replace(/\s\s+/g, " "),
+    amount: (parts[1] ?? "").trim(),
+  };
+});
+
+const contentSections = sections.filter((s) => s.title !== "SUPPLEMENT FACTS");
+---
+
+<BaseLayout title={`${f.title} • Historical Translation Project™`}>
+  <Header />
+
+  <main class="mx-auto max-w-6xl px-4 py-14">
+    <div class="grid gap-10 lg:grid-cols-[1.15fr,0.85fr]">
+      <div>
+        <div class="kicker">Program</div>
+        <h1 class="mt-3 h-serif text-4xl sm:text-5xl">{f.title}</h1>
+        <p class="mt-5 text-ink-900/70 leading-relaxed text-lg">{f.excerpt}</p>
+
+        <!-- Content sections -->
+        <div class="mt-10 space-y-6">
+          {contentSections.map((s) => (
+            <section class="card p-8">
+              <h2 class="h-serif text-2xl">{s.title.replace(/_/g, " ")}</h2>
+              <div class="mt-4 space-y-4 text-ink-900/75 leading-relaxed">
+                {s.lines.map((p) => (
+                  <p>{p}</p>
+                ))}
+              </div>
+            </section>
+          ))}
+
+          <section class="card p-8">
+            <h2 class="h-serif text-2xl">Compliance</h2>
+            <p class="mt-4 text-ink-900/70 leading-relaxed">
+              Educational content only; not medical advice. Supplements are not intended to diagnose, treat, cure, or prevent any disease.
+              Always consult a qualified clinician before use—especially if pregnant/nursing or taking medication.
+            </p>
+          </section>
+        </div>
+      </div>
+
+      <aside class="space-y-6">
+        <div class="card overflow-hidden">
+          <img src={f.image} alt={f.title} class="w-full h-auto" loading="eager" />
+        </div>
+
+        {facts && (
+          <div class="card p-8">
+            <h2 class="h-serif text-2xl">Supplement Facts</h2>
+            {servingLine && <p class="mt-3 text-sm text-ink-900/70">{servingLine}</p>}
+
+            <div class="mt-5 overflow-hidden rounded-xl ring-1 ring-ink-900/10">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="bg-parchment-100">
+                    <th class="text-left font-medium px-4 py-3">Ingredient</th>
+                    <th class="text-right font-medium px-4 py-3">Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {ingredients.map((ing) => (
+                    <tr class="border-t border-ink-900/10">
+                      <td class="px-4 py-3 align-top">{ing.name}</td>
+                      <td class="px-4 py-3 text-right whitespace-nowrap align-top">{ing.amount}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {otherLine && <p class="mt-4 text-xs text-ink-900/60">{otherLine}</p>}
+          </div>
+        )}
+
+        <!-- Optional add-ons (only render when present in dataset) -->
+        {(f as any).addons?.length ? (
+          <div class="card p-8">
+            <h2 class="h-serif text-2xl">Optional add-ons</h2>
+            <ul class="mt-4 space-y-2 text-ink-900/70">
+              {(f as any).addons.map((a: any) => (
+                <li>
+                  <span class="font-medium text-ink-900">{a.title}</span>
+                  {a.note ? <span class="text-ink-900/70"> — {a.note}</span> : null}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+
+        <div class="card p-8">
+          <h2 class="h-serif text-2xl">Technical dossier</h2>
+          <p class="mt-4 text-ink-900/70 leading-relaxed">
+            Download the technical dossier for complete ingredient evidence tables, citation index, and safety/interaction analysis.
+          </p>
+          <div class="mt-6">
+            <a class="btn-ghost" href="#">Download (coming soon)</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

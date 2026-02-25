@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+// TODO: Replace with your exact Amazon URLs
+const rambamAmazon = "https://www.amazon.com/dp/REPLACE-RAMBAM";
+const cancerAmazon = "https://www.amazon.com/dp/REPLACE-CANCER";
+---
+
+<BaseLayout title="Publications • Historical Translation Project™">
+  <Header />
+
+  <main class="mx-auto max-w-6xl px-4 py-14">
+    <div class="max-w-3xl">
+      <div class="kicker">Publications</div>
+      <h1 class="mt-3 h-serif text-4xl sm:text-5xl">Foundational books</h1>
+      <p class="mt-6 text-ink-900/70 leading-relaxed text-lg">
+        These publications are the source texts that anchor our mission and inform our formulation systems.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 lg:grid-cols-2">
+      <article class="card overflow-hidden">
+        <div class="grid sm:grid-cols-[220px,1fr]">
+          <div class="bg-parchment-100">
+            <img src="/images/books/rambam-cover.jpg" alt="Rambam's Guide to Health cover" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-8">
+            <div class="kicker">Book</div>
+            <h2 class="mt-2 h-serif text-2xl">Rambam’s Guide to Health</h2>
+            <p class="mt-3 text-ink-900/70 leading-relaxed">
+              A practical modern interpretation of medieval preventive medicine—focused on daily routine, digestion, balance, and long-term resilience.
+            </p>
+
+            <details class="mt-5">
+              <summary class="cursor-pointer text-sm font-medium text-ink-900/80 hover:text-ink-900">Read a summary</summary>
+              <div class="mt-3 text-sm leading-relaxed text-ink-900/70">
+                A structured guide to preventive health drawn from Rambam’s principles—translated into modern language and organized into actionable frameworks.
+                The book emphasizes routine, digestion, timing, and constitutional balance as the foundation of long-term resilience.
+              </div>
+            </details>
+
+            <div class="mt-6">
+              <a class="btn-primary" href={rambamAmazon} target="_blank" rel="noreferrer">Purchase on Amazon</a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card overflow-hidden">
+        <div class="grid sm:grid-cols-[220px,1fr]">
+          <div class="bg-parchment-100">
+            <img src="/images/books/cancer-cover-placeholder.svg" alt="Cancer Across Time and Civilizations cover" class="w-full h-full object-cover" />
+          </div>
+          <div class="p-8">
+            <div class="kicker">Book</div>
+            <h2 class="mt-2 h-serif text-2xl">Cancer Across Time and Civilizations</h2>
+            <p class="mt-3 text-ink-900/70 leading-relaxed">
+              A historical and biological translation—connecting medical history with modern cellular systems, terrain, resilience, and supportive care logic.
+            </p>
+
+            <details class="mt-5">
+              <summary class="cursor-pointer text-sm font-medium text-ink-900/80 hover:text-ink-900">Read a summary</summary>
+              <div class="mt-3 text-sm leading-relaxed text-ink-900/70">
+                A sweeping narrative that tracks how civilizations described “malignant growth,” systemic decline, and terrain across time—then maps those observations
+                onto modern biology. Built for clinicians and serious readers, it frames historical insight as a lens for supportive strategy without making treatment claims.
+              </div>
+            </details>
+
+            <div class="mt-6">
+              <a class="btn-primary" href={cancerAmazon} target="_blank" rel="noreferrer">Purchase on Amazon</a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>
